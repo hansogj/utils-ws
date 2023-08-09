@@ -5,11 +5,6 @@ This libs are using [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/wor
 ## Workspaces
 
 - [immer-reduxer](./packages/immer-reduxer/README.md)
-- [jestures](./packages/jestures/README.md)
-- [testing-library-utils](./packages/testing-library-utils/README.md)
-- [paths](./packages/paths/README.md)
-- [mock-modules](./packages/mock-modules/README.md)
-- [formats](./packages/formats/README.md)
 
 [//]: <> (package-list-placeholder-do-not-remove)
 
