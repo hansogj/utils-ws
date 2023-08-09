@@ -128,3 +128,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+junit-TEST.xml
+**/.DS_Store
+surefire-reports/

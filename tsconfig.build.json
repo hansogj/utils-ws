@@ -1,0 +1,21 @@
+{
+    "exclude": [
+        "node_modules",
+        "__mocks__",
+        "dist"
+    ],
+    "compilerOptions": {
+        "target": "ES2015",
+        "module": "commonjs",
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "declaration": true,
+        "paths": {
+            "@acme-corp/*": [
+                "./packages/*/"
+            ]
+        }
+    }
+}
