@@ -1,0 +1,48 @@
+{
+  "name": "@hansogj/find-js",
+  "version": "5.1.2-1",
+  "description": "Returning an iterable array of the result of  querySelectorAll from root to selector ",
+  "main": "dist/find.js",
+  "types": "dist/find.d.ts",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "find",
+    "select",
+    "document",
+    "node",
+    "array"
+  ],
+  "author": "Hans Ole Gjerdrum (hansogj@gmail.com)",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "array-from": "^2.1.1"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.4.4",
+    "ts-node": "^10.9.1",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -rf dist node_modules coverage *.tgz",
+    "prepack": "npm run build",
+    "ts": "tsc --noEmit -p tsconfig.pkg.json",
+    "prebuild": "rm -rf dist/",
+    "build": "webpack --mode=production --node-env=production --config=webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hansogj/utils-ws.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hansogj/utils-ws/issues"
+  },
+  "homepage": "https://github.com/hansogj/utils-ws#readme"
+}

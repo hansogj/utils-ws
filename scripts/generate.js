@@ -15,11 +15,13 @@ const configurePackage = (newPackName) => {
         ...config,
         ...{
             version: '0.0.1',
-            files: ['src'],
-            main: 'src/index.ts',
+            files: ['dist'],
+            main: 'dist/index.js',
+            author: "Hans Ole Gjerdrum (hansogj@gmail.com)",
             scripts: {
                 ...config.scripts,
                 ...{
+                    prebuild: "rm -rf dist/",
                     build: 'rm -rf dist/* && tsc -p tsconfig.pkg.json',
                     clean: 'rm -rf dist node_modules coverage *.tgz',
                     prepack: 'npm run build',
