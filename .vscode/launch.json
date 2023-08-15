@@ -1,0 +1,28 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "runtimeExecutable": "/Users/hansogj/.nvm/versions/node/v16.13.0/bin/node",
+            "type": "node",
+            "name": "vscode-jest-tests-1620800772656",
+            "request": "launch",
+            "env": {
+                "NODE_ICU_DATA": "node_modules/full-icu",
+                "NODE_OPTIONS": "--experimental-vm-modules"
+            },
+            "args": [
+                "--runInBand",
+                "--verbose",
+                "-i",
+                "--no-cache",
+                "--config",
+                "jest.config.mjs"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "disableOptimisticBPs": true,
+            "program": "${workspaceFolder}/node_modules/jest/bin/jest"
+        },
+    ]
+}

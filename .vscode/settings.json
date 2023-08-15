@@ -1,0 +1,16 @@
+{
+    "window.title": "@hansogj/utils-ws [${activeEditorShort}]",
+    "workbench.colorTheme": "Darktooth",
+    "workbench.colorCustomizations": {
+        "[Darktooth]": {
+            "activityBar.background": "#963f01",
+            "statusBar.background": "#963f01",
+            "titleBar.activeBackground": "#963f01",
+            "titleBar.inactiveBackground": "#963f01",
+            "scrollbar.shadow": "#963f01",
+            "scrollbarSlider.background": "#963f01",
+            "sideBar.background": "#3c1a0155",
+            "editor.background": "#3c1a0111"
+        }
+    },
+}
