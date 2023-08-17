@@ -5,8 +5,8 @@
         "dist"
     ],
     "compilerOptions": {
-        "target": "ES2015",
-        "module": "commonjs",
+        "module": "ESNext",
+        "target": "ESNext",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
