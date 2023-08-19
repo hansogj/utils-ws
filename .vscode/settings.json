@@ -13,4 +13,8 @@
             "editor.background": "#3c1a0111"
         }
     },
+    "files.exclude": {
+        "**/dist": true,
+        "**/*tgz": true,
+    }
 }
