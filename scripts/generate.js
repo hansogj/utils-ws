@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const { execSync } = require('child_process');
 const fs = require('fs');
 
@@ -15,19 +16,30 @@ const configurePackage = (newPackName) => {
         ...config,
         ...{
             version: '0.0.1',
-            files: ['dist'],
             main: 'dist/index.js',
+            types: 'dist/index.d.js',
+            files: ['dist'],
             author: "Hans Ole Gjerdrum (hansogj@gmail.com)",
             scripts: {
                 ...config.scripts,
                 ...{
                     prebuild: "rm -rf dist/",
-                    build: 'rm -rf dist/* && tsc -p tsconfig.pkg.json',
+                    build: "rm -rf dist/* && npm run build:ts",
+                    "build:ts": 'tsc -p tsconfig.pkg.json',
+                    "build:wp": "webpack --mode=production --node-env=production --config=webpack.config.js",
                     clean: 'rm -rf dist node_modules coverage *.tgz',
                     prepack: 'npm run build',
                     ts: 'tsc --noEmit -p tsconfig.pkg.json',
                 },
             },
+            repository: {
+                type: "git",
+                url: "https://github.com/hansogj/utils-ws.git"
+            },
+            bugs: {
+                url: "https://github.com/hansogj/utils-ws/issues"
+            },
+            homepage: "https://github.com/hansogj/utils-ws#readme"
         },
     };
     fs.writeFileSync(toWs(newPackName, `package.json`), JSON.stringify(config, null, 4));
@@ -54,7 +66,7 @@ const generate = (newPackName) => {
 
         execSync(`npm init --scope=${scope} -y -w ${newPackPath}`);
         configurePackage(newPackName);
-        copyFiles(['.npmignore', 'tsconfig.pkg.json'], newPackPath);
+        copyFiles(['.npmignore', 'tsconfig.pkg.json', 'webpack.config.js'], newPackPath);
         fs.writeFileSync(`${newPackPath}/README.md`, `# ${newPackName.toUpperCase()}`);
         fs.mkdirSync(`${newPackPath}/src`);
         copyFiles(['index.ts'], `${newPackPath}/src`);

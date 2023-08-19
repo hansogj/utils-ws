@@ -1,6 +1,9 @@
 {
     "extends": "../../tsconfig.build.json",
     "compilerOptions": {
+        "moduleResolution": "NodeNext",
+        "target": "ES2015",
+        "module": "commonjs",
         "outDir": "./dist/"
     },
     "include": [

@@ -6,6 +6,7 @@ This libs are using [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/wor
 
 - [immer-reduxer](./packages/immer-reduxer/README.md)
 - [find-js](./packages/find-js/README.md)
+- [abonnement-js](./packages/abonnement-js/README.md)
 
 [//]: <> (package-list-placeholder-do-not-remove)
 
