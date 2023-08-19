@@ -30,12 +30,13 @@
     "webpack-cli": "^5.1.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "rm -rf dist/",
+    "build": "rm -rf dist/* && npm run build:wp",
+    "build:ts": "tsc -p tsconfig.pkg.json",
+    "build:wp": "webpack --mode=production --node-env=production --config=webpack.config.js",
     "clean": "rm -rf dist node_modules coverage *.tgz",
     "prepack": "npm run build",
-    "ts": "tsc --noEmit -p tsconfig.pkg.json",
-    "prebuild": "rm -rf dist/",
-    "build": "webpack --mode=production --node-env=production --config=webpack.config.js"
+    "ts": "tsc --noEmit -p tsconfig.pkg.json"
   },
   "repository": {
     "type": "git",
