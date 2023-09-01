@@ -1,25 +1,10 @@
 {
-  "name": "@hansogj/abonnement-js",
-  "version": "4.0.0-0",
-  "description": "lightweight naive event subscription",
-  "main": "./dist/abonnement.js",
-  "types": "./dist/abonnement.d.ts",
-  "keywords": [
-    "event",
-    "typescript",
-    "js",
-    "subscription"
-  ],
-  "devDependencies": {
-    "acorn": "^8.10.0",
-    "ts-loader": "^9.4.4",
-    "ts-node": "^10.9.1",
-    "webpack": "^5.88.2",
-    "webpack-cli": "^5.1.4"
-  },
-  "dependencies": {
-    "@hansogj/array.utils": "file:../array.utils"
-  },
+  "name": "@hansogj/array.utils",
+  "version": "2.0.0-0",
+  "description": "utilizes js/ts arrays with onEmpty, defined and flatMap functions",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prebuild": "rm -rf dist/",
@@ -32,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hansogj/utils-ws.git"
+    "url": "https://github.com/hansogj/utils-ws.git"
   },
   "author": "Hans Ole Gjerdrum (hansogj@gmail.com)",
   "license": "ISC",
@@ -42,5 +27,9 @@
   "homepage": "https://github.com/hansogj/utils-ws#readme",
   "files": [
     "dist"
+  ],
+  "keywords": [
+    "defined",
+    "properties"
   ]
 }

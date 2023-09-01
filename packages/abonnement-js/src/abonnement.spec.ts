@@ -19,6 +19,7 @@ const lastCall = (spy: jest.Mock) =>
 
 describe('Abonnement', () => {
     afterEach(jest.restoreAllMocks);
+    afterEach(jest.resetAllMocks);
     beforeEach(() => {
         stringAbonnement = new Abonnement<string>(initiellVerdi);
         numberAbonnement = new Abonnement<number>();

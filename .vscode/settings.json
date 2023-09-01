@@ -16,5 +16,13 @@
     "files.exclude": {
         "**/dist": true,
         "**/*tgz": true,
-    }
+    },
+    "cSpell.words": [
+        "abonnent",
+        "abonnenter",
+        "abonner",
+        "aktuell",
+        "avslutt",
+        "varsle"
+    ]
 }

@@ -41,6 +41,15 @@ function set-version() {
 
 }
 
+function every() {
+
+    for package in packages/*; do
+        cd $package
+        $@
+        cd -
+    done
+}
+
 function workspaces() {
     local FN=$1
     for package in packages/*; do $FN $package ${@:2}; done
