@@ -1,0 +1,11 @@
+{
+  "upgrade": true,
+  "dep": [
+    "peer",
+    "prod",
+    "dev"
+  ],
+  "root": true,
+  "workspaces": true,
+  "reject": []
+}

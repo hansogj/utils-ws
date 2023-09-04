@@ -24,7 +24,7 @@
     "src"
   ],
   "peerDependencies": {
-    "@types/react-redux": "7.1.25",
+    "@types/react-redux": "7.1.26",
     "react-redux": "8.1.2",
     "immer": "^10.0.2"
   },

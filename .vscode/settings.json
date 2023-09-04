@@ -13,4 +13,23 @@
             "editor.background": "#3c1a0111"
         }
     },
+    "cSpell.ignoreRegExpList": [
+        "abonne.*",
+        "endre.*",
+        "init.*",
+        "oppdat.*",
+        "verdi*",
+    ],
+    "cSpell.words": [
+        "avslutt",
+        "begge",
+        "blir",
+        "definert",
+        "ikke",
+        "initiell",
+        "kalles",
+        "kallt",
+        "spion",
+        "verdi"
+    ],
 }

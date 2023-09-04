@@ -19,6 +19,7 @@ const lastCall = (spy: jest.Mock) =>
 
 describe('Abonnement', () => {
     afterEach(jest.restoreAllMocks);
+    afterEach(jest.resetAllMocks);
     beforeEach(() => {
         stringAbonnement = new Abonnement<string>(initiellVerdi);
         numberAbonnement = new Abonnement<number>();
@@ -49,7 +50,7 @@ describe('Abonnement', () => {
         });
     });
 
-    describe('abonennt kalles ved oppdatering', () => {
+    describe('abonnent kalles ved oppdatering', () => {
         beforeEach(() => stringAbonnement.varsle(nyVerdi));
         beforeEach(() => numberAbonnement.varsle(22));
 
