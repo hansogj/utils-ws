@@ -1,4 +1,4 @@
-[![example workflow](https://github.com/github/docs/actions/workflows/webpack.yml/badge.svg)](https://github.com/hansogj/utils-ws/actions/workflows/webpack.yml/badge.svg)
+[![example workflow](https://github.com/hansogj/utils-ws/actions/workflows/webpack.yml/badge.svg)](https://github.com/hansogj/utils-ws/actions/workflows/webpack.yml/badge.svg)
 
 # Frontend utils for forsikring
 
