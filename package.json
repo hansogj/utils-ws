@@ -21,7 +21,7 @@
     "ws:commit:tag:push": "git commit -a -m \"${npm_config_tag}\" --no-verify && git tag -a ${npm_config_tag} -m \"${npm_config_tag}\" && git push --follow-tags",
     "ws:local-dependencies": "./scripts/ws-scripts.sh workspaces local-dependencies",
     "ws:pack": "rm -f *.tgz && npm run build &&  npm pack -ws",
-    "ws:ts": "npm run ts -ws",
+    "ws:ts": "npm run build -w packages/array.utils && npm run ts -ws",
     "ws:version:list": "./scripts/ws-scripts.sh workspaces list-version",
     "ws:version:set:package": "./scripts/ws-scripts.sh set-version ${npm_config_package} ${npm_config_bump}",
     "ws:version:set:all": "./scripts/ws-scripts.sh workspaces set-version ${npm_config_bump}",
