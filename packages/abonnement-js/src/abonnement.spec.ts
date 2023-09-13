@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Abonnement, JoinedAbonnement, AlleAbonnementer } from '../src/abonnement';
+import { Abonnement, JoinedAbonnement, AlleAbonnementer } from '../dist/abonnement';
 import '@hansogj/array.utils';
 
 let stringAbonnement: Abonnement<string>;

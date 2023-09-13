@@ -5,7 +5,7 @@
     "./packages/*"
   ],
   "scripts": {
-    "build": "npm run build -ws",
+    "build": "npm run build -w packages/array.utils && npm run build -ws",
     "circularity:check": "madge  --warning --extensions ts,tsx ./packages",
     "clean": "npm run clean -ws && rm -rf node_modules *.tgz surefire-reports",
     "generate": "node -- ./scripts/generate.js",
@@ -62,9 +62,9 @@
     "outputDirectory": "./surefire-reports"
   },
   "engines": {
-    "node": "18.13.0"
+    "node": "20.5.1"
   },
   "volta": {
-    "node": "18.13.0"
+    "node": "20.5.1"
   }
 }
