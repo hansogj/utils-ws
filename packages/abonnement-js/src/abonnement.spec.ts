@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Abonnement, JoinedAbonnement, AlleAbonnementer } from '../src/abonnement';
+import { Abonnement, JoinedAbonnement, AlleAbonnementer } from './abonnement';
 import '@hansogj/array.utils';
 
 let stringAbonnement: Abonnement<string>;
@@ -19,6 +19,7 @@ const lastCall = (spy: jest.Mock) =>
 
 describe('Abonnement', () => {
     afterEach(jest.restoreAllMocks);
+    afterEach(jest.resetAllMocks);
     beforeEach(() => {
         stringAbonnement = new Abonnement<string>(initiellVerdi);
         numberAbonnement = new Abonnement<number>();
