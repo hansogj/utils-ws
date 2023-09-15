@@ -24,7 +24,7 @@ jobs:
     uses: ./.github/workflows/build.yml
   common-bump:
     permissions:
-      security-events: write
+      contents: write
     needs: [build]
     uses: hansogj/package-test-utils/.github/workflows/shared-bump.yml@main
     with:
