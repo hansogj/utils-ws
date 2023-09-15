@@ -5,24 +5,24 @@
     "./packages/*"
   ],
   "scripts": {
-    "build": "npm run build -ws",
+    "build": "npm run build -w packages/array.utils && npm run build -ws",
     "circularity:check": "madge  --warning --extensions ts,tsx ./packages",
     "clean": "npm run clean -ws && rm -rf node_modules *.tgz surefire-reports",
     "generate": "node -- ./scripts/generate.js",
     "lint": "npx eslint packages/**/src --ext .js,.jsx,.ts,.tsx",
     "pre-commit": "npm run ws:ts && npm run circularity:check && npm run lint && npm test",
-    "prepack": "npm run build",
+    "prepack": "rm -f *.tgz && npm run build",
     "prepare": "husky install",
     "prettier:write": "prettier --write 'packages/**/*.{ts,tsx,js,jsx}'",
     "test:ci": "npm run test -- --ci  --reporters=default --reporters=jest-junit",
     "test:coverage": "npm run test:ci --  --coverage",
     "test:watch": "npm run test -- --watch",
-    "test": "NODE_ICU_DATA=node_modules/full-icu jest --runInBand packages/**/src/*.spec.*",
+    "test": "NODE_ICU_DATA=node_modules/full-icu jest --runInBand [packages/**/src/*.spec.*, packages/**/src/**/*.spec.*]",
     "ws:commit:tag:push": "git commit -a -m \"${npm_config_tag}\" --no-verify && git tag -a ${npm_config_tag} -m \"${npm_config_tag}\" && git push --follow-tags",
     "ws:local-dependencies": "./scripts/ws-scripts.sh workspaces local-dependencies",
     "ws:pack": "rm -f *.tgz && npm run build &&  npm pack -ws",
-    "ws:ts": "npm run ts -ws",
     "ws:version:list": "./scripts/ws-scripts.sh every version",
+    "ws:ts": "npm run build -w packages/array.utils && npm run ts -ws",
     "ws:version:set:package": "./scripts/ws-scripts.sh set-version ${npm_config_package} ${npm_config_bump}",
     "ws:version:set:all": "./scripts/ws-scripts.sh workspaces set-version ${npm_config_bump}",
     "update": "npx npm-check-updates -i -t minor && npm run post:update",
@@ -64,7 +64,7 @@
     "outputDirectory": "./surefire-reports"
   },
   "engines": {
-    "node": "20.5.X"
+    "node": "20.5.1"
   },
   "volta": {
     "node": "20.5.1"

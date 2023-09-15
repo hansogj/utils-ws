@@ -54,6 +54,7 @@ function every() {
         cd ../
     done
     cd ../
+
 }
 
 function workspaces() {

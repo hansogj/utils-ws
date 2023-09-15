@@ -13,6 +13,10 @@
             "editor.background": "#3c1a0111"
         }
     },
+    "files.exclude": {
+        "**/dist": true,
+        "**/*tgz": true,
+    },
     "cSpell.ignoreRegExpList": [
         "abonne.*",
         "endre.*",
@@ -21,6 +25,10 @@
         "verdi*",
     ],
     "cSpell.words": [
+        "abonnent",
+        "abonnenter",
+        "abonner",
+        "aktuell",
         "avslutt",
         "begge",
         "blir",
@@ -30,6 +38,7 @@
         "kalles",
         "kallt",
         "spion",
-        "verdi"
+        "varsle",
+        "verdi",
     ],
 }

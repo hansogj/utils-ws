@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "runtimeExecutable": "/Users/hansogj/.nvm/versions/node/v16.13.0/bin/node",
+            "runtimeExecutable": "/home/hansogj/.volta/bin/node",
             "type": "node",
             "name": "vscode-jest-tests-1620800772656",
             "request": "launch",
