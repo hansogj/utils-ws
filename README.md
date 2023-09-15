@@ -1,6 +1,6 @@
-[![example workflow](https://github.com/hansogj/utils-ws/actions/workflows/webpack.yml/badge.svg)](https://github.com/hansogj/utils-ws/actions/workflows/webpack.yml/badge.svg)
+[![example workflow](https://github.com/hansogj/utils-ws/actions/workflows/build.yml/badge.svg)](https://github.com/hansogj/utils-ws/actions/workflows/build.yml/badge.svg)
 
-# Frontend utils for forsikring
+# Various frontend utils and polyfills
 
 This libs are using [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces) to achieve mono-repo multi-packages
 
@@ -59,3 +59,5 @@ npm run ws:version:set:package --package=packages/<name-of-package> --bump=<new-
 whereas
 
 ```bash
+
+```
