@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PACKAGES=packages
+
 function npm-upgrade() {
     cd $1
     printf "%0.s#" {1..60}
@@ -8,8 +10,11 @@ function npm-upgrade() {
     cd -
 }
 
-function list-version() {
-    node scripts/versions.js $1
+function version() {
+    local package=$(node -e "const p  = require('./package.json'); console.log(p.name); ")
+    local current=$(node -e "const p  = require('./package.json'); console.log(p.version); ")
+    local published=$(npm view $package version --no-workspaces 2>/dev/null &)
+    printf "%-50s: [current version: %-10s published version: %-10s] \n" $package "$current," "${published:-Not published}"
 }
 
 function local-dependencies() {
@@ -42,17 +47,19 @@ function set-version() {
 }
 
 function every() {
-
-    for package in packages/*; do
-        cd $package
-        $@
-        cd -
+    cd $PACKAGES
+    for name in */; do
+        cd $name
+        ${@:1}
+        cd ../
     done
+    cd ../
+
 }
 
 function workspaces() {
     local FN=$1
-    for package in packages/*; do $FN $package ${@:2}; done
+    for package in $PACKAGES/*; do $FN $package ${@:2}; done
 }
 
 "$@"

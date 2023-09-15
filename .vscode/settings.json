@@ -18,12 +18,28 @@
         "**/dist": true,
         "**/*tgz": true,
     },
+    "cSpell.ignoreRegExpList": [
+        "abonne.*",
+        "endre.*",
+        "init.*",
+        "oppdat.*",
+        "verdi*",
+    ],
     "cSpell.words": [
         "abonnent",
         "abonnenter",
         "abonner",
         "aktuell",
         "avslutt",
-        "varsle"
-    ]
+        "begge",
+        "blir",
+        "definert",
+        "ikke",
+        "initiell",
+        "kalles",
+        "kallt",
+        "spion",
+        "varsle",
+        "verdi",
+    ],
 }

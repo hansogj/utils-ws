@@ -50,7 +50,7 @@ describe('Abonnement', () => {
         });
     });
 
-    describe('abonennt kalles ved oppdatering', () => {
+    describe('abonnent kalles ved oppdatering', () => {
         beforeEach(() => stringAbonnement.varsle(nyVerdi));
         beforeEach(() => numberAbonnement.varsle(22));
 
