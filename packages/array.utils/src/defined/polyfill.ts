@@ -34,3 +34,5 @@ Array.prototype.last = defined(Array.prototype.last)
     : function (this: any[]) {
           return this.filter((_, i) => i === this.length - 1);
       };
+
+export {};

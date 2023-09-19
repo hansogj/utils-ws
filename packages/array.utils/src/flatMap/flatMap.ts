@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-// eslint-disable-next-line @typescript-eslint/no-redeclare, @typescript-eslint/no-unused-vars
-interface Array<T> {
-    flatMap<U, This = undefined>(
-        callback: (this: This, value: T, index: number, array: T[]) => U | ReadonlyArray<U>,
-        thisArg?: This,
-    ): U[];
+
+declare global {
+    interface Array<T> {
+        flatMap<U, This = undefined>(
+            callback: (this: This, value: T, index: number, array: T[]) => U | ReadonlyArray<U>,
+            thisArg?: This,
+        ): U[];
+    }
 }
 
 Array.prototype.flatMap =
@@ -16,3 +18,4 @@ Array.prototype.flatMap =
             this.map(lambda),
         );
     };
+export {};

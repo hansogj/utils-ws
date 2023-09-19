@@ -1,6 +1,5 @@
 {
     "window.title": "@hansogj/utils-ws [${activeEditorShort}]",
-    "editor.tabSize": 2,
     "workbench.colorTheme": "Darktooth",
     "workbench.colorCustomizations": {
         "[Darktooth]": {

@@ -2,8 +2,9 @@
   "name": "@hansogj/array.utils",
   "version": "2.0.0-0",
   "description": "utilizes js/ts arrays with onEmpty, defined and flatMap functions",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
