@@ -17,7 +17,7 @@
     "test:ci": "npm run test -- --ci  --reporters=default --reporters=jest-junit",
     "test:coverage": "npm run test:ci --  --coverage",
     "test:watch": "npm run test -- --watch",
-    "test": "NODE_ICU_DATA=node_modules/full-icu jest --runInBand [packages/**/src/*.spec.*, packages/**/src/**/*.spec.*]",
+    "test": "NODE_ICU_DATA=node_modules/full-icu jest --runInBand",
     "ws:commit:tag:push": "git commit -a -m \"${npm_config_tag}\" --no-verify && git tag -a ${npm_config_tag} -m \"${npm_config_tag}\" && git push --follow-tags",
     "ws:local-dependencies": "./scripts/ws-scripts.sh workspaces local-dependencies",
     "ws:pack": "rm -f *.tgz && npm run build &&  npm pack -ws",
@@ -66,6 +66,11 @@
   },
   "jest-junit": {
     "outputDirectory": "./surefire-reports"
+  },
+  "jest": {
+    "testMatch": [
+      "**/*.spec.{ts,tsx}"
+    ]
   },
   "engines": {
     "node": "20.5.1"
