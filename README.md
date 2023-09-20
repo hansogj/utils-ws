@@ -6,10 +6,10 @@ This libs are using [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/wor
 
 ## Workspaces
 
-- [immer-reduxer](./packages/immer-reduxer/README.md)
-- [find-js](./packages/find-js/README.md)
-- [abonnement-js](./packages/abonnement-js/README.md)
-- [array.utils](./packages/array.utils/README.md)
+-   [immer-reduxer](./packages/immer-reduxer/README.md)
+-   [find-js](./packages/find-js/README.md)
+-   [abonnement-js](./packages/abonnement-js/README.md)
+-   [array.utils](./packages/array.utils/README.md)
 
 [//]: <> (package-list-placeholder-do-not-remove)
 
@@ -56,8 +56,9 @@ The npm-script _ws:version_ will ensure version and tagging are done right:
 npm run ws:version:set:package --package=packages/<name-of-package> --bump=<new-version-number>
 ```
 
-whereas
+## Publish
 
 ```bash
+npm publish --workspace @hansogj/<name-of-package>
 
 ```

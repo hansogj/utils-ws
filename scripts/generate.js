@@ -32,6 +32,10 @@ const configurePackage = (newPackName) => {
                     ts: 'tsc --noEmit -p tsconfig.pkg.json',
                 },
             },
+            publishConfig: {
+                access: "public",
+                registry: "https://registry.npmjs.org/"
+            },
             repository: {
                 type: "git",
                 url: "https://github.com/hansogj/utils-ws.git"
