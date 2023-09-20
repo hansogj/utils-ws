@@ -13,7 +13,7 @@ export const defined = <T>(prop: T): boolean => {
     }
 
     if (prop.hasOwnProperty('size')) {
-        return (prop as T & { size: number }).size > 0;
+        return (prop as T & {size: number}).size > 0;
     }
 
     if (typeof prop === 'boolean') {

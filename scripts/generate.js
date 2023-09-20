@@ -17,6 +17,7 @@ const configurePackage = (newPackName) => {
             version: '0.0.1',
             main: 'dist/index.js',
             types: 'dist/index.d.js',
+            module: "./dist/index.js",
             files: ['dist'],
             author: "Hans Ole Gjerdrum (hansogj@gmail.com)",
             scripts: {
@@ -30,6 +31,10 @@ const configurePackage = (newPackName) => {
                     prepack: 'npm run build',
                     ts: 'tsc --noEmit -p tsconfig.pkg.json',
                 },
+            },
+            publishConfig: {
+                access: "public",
+                registry: "https://registry.npmjs.org/"
             },
             repository: {
                 type: "git",

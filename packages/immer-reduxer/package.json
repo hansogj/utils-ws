@@ -19,6 +19,10 @@
     "reducer"
   ],
   "author": "hansogj@gmail.com",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "license": "ISC",
   "files": [
     "src"

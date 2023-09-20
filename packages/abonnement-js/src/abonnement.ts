@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { defined } from '@hansogj/array.utils/dist/defined';
+import { defined } from '@hansogj/array.utils';
 
 interface IndexedObject {
     [key: string]: any;

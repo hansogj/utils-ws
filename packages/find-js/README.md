@@ -5,17 +5,23 @@ Returns an iterable array of node-elements.
 ## Usage
 
 ### JS
-```js
-find("root", 'selector')
-```
 
+```js
+// either
+const find = require("@hansogj/find-js").default;
+
+//or
+<script src="../node_modules/@hansogj/find-js/dist/index.js"></script>
+const find = window.find.default;
+
+----
+console.log(find('h2', window.document.body));
+```
 
 ### TS
-``` ts
+
+```ts
 import find from 'find-js';
 
-console.log(find("h2", window.document.body))
+console.log(find('h2', window.document.body));
 ```
-
-
-
