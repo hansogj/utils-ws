@@ -17,6 +17,7 @@ const configurePackage = (newPackName) => {
             version: '0.0.1',
             main: 'dist/index.js',
             types: 'dist/index.d.js',
+            module: "./dist/index.js",
             files: ['dist'],
             author: "Hans Ole Gjerdrum (hansogj@gmail.com)",
             scripts: {

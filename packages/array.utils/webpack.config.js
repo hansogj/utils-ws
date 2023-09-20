@@ -24,4 +24,4 @@ module.exports = () => ({
         library: 'array.utils',
 
     }
-});
+});   

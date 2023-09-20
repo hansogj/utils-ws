@@ -1,14 +1,9 @@
 {
     "extends": "../../tsconfig.build.json",
     "compilerOptions": {
-        "outDir": "./dist/",
+        "allowJs": true,
         "allowSyntheticDefaultImports": true,
-        "sourceMap": true,
         "declaration": true,
-        "moduleResolution": "node",
-        "noImplicitAny": true,
-        "module": "ESNext",
-        "target": "ESNext",
         "lib": [
             "dom",
             "DOM.Iterable",
@@ -16,9 +11,14 @@
             "es5",
             "es2019"
         ],
-        "allowJs": true,
+        "module": "ESNext",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "target": "ESNext",
     },
     "include": [
-        "src/find.ts",
+        "src/*.ts",
     ]
 }

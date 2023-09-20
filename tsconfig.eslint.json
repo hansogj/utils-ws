@@ -3,6 +3,11 @@
     "include": [
         "./**/*.ts",
         "./**/*.js",
-        "./.*.js"
+        "./.*.js",
+    ],
+    "exclude": [
+        "node_modules",
+        "__mocks__",
+        "dist",
     ]
 }
