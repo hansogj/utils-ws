@@ -59,6 +59,15 @@ npm run ws:version:set:package --package=packages/<name-of-package> --bump=<new-
 ## Publish
 
 ```bash
+npm run build
 npm publish --workspace @hansogj/<name-of-package>
+
+```
+
+or
+
+```bash
+npm run build
+npm publish --ws
 
 ```
