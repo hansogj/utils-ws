@@ -2,14 +2,6 @@
 
 PACKAGES=packages
 
-function npm-upgrade() {
-    cd $1
-    printf "%0.s#" {1..60}
-    printf "\n### \t ws: $1 \n\n"
-    npx npm-check-updates --dep peer,prod,dev -i -u
-    cd -
-}
-
 function version() {
     local package=$(node -e "const p  = require('./package.json'); console.log(p.name); ")
     local current=$(node -e "const p  = require('./package.json'); console.log(p.version); ")
