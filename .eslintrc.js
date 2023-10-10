@@ -12,6 +12,10 @@ module.exports = {
         project: './tsconfig.eslint.json',
     },
     rules: {
-        "@typescript-eslint/no-var-requires": 0
+        "@typescript-eslint/no-var-requires": 0,
+        "arrow-body-style": [
+            "error",
+            "as-needed"
+        ]
     }
 };

@@ -27,7 +27,7 @@
     "ws:version:set:all": "./scripts/ws-scripts.sh workspaces set-version ${npm_config_bump}",
     "update": "npx npm-check-updates -i -t minor && npm run post:update",
     "update:majors": "npx npm-check-updates -i -t latest && npm run post:update",
-    "post:update": "rm -rfv node_modules package-lock.json && npm i --progress"
+    "post:update": "rm -rfv node_modules && npm i --progress"
   },
   "devDependencies": {
     "@babel/core": "7.22.11",
