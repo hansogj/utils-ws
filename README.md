@@ -56,6 +56,13 @@ The npm-script _ws:version_ will ensure version and tagging are done right:
 npm run ws:version:set:package --package=packages/<name-of-package> --bump=<new-version-number>
 ```
 
+or as a bump action
+
+```bash
+npm run ws:version:set:all <major|minor|patch....>
+
+```
+
 ## Publish
 
 ```bash
