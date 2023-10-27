@@ -55,14 +55,12 @@ export class AlleAbonnementer<T> extends Abonnement<T> {
     constructor(private list: Abonnement<any>[]) {
         super();
 
-        this.avsluttListe = this.list.map((abonnent: Abonnement<T>, i: number) => {
-            return abonnent.abonner((nyVerdi: T) => {
+        this.avsluttListe = this.list.map((abonnent: Abonnement<T>, i: number) => abonnent.abonner((nyVerdi: T) => {
                 const nyeVerdier: any[] = this.list.map((denne: Abonnement<T>, j) => (i === j ? nyVerdi : denne.verdi));
                 if (nyeVerdier.defined().length === this.list.length) {
                     super.varsle(nyeVerdier as any);
                 }
-            });
-        });
+            }));
     }
 
     avslutt(id: number) {
