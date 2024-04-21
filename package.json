@@ -60,7 +60,8 @@
     "webpack-cli": "^5.1.4"
   },
   "peerDependencies": {
-    "eslint": "8.56.0"
+    "eslint": "8.56.0",
+    "inflight": "1.0.6"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
