@@ -61,7 +61,7 @@
   },
   "peerDependencies": {
     "eslint": "8.56.0",
-    "inflight": "1.0.6"
+    "inflight": "1.0.5"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
