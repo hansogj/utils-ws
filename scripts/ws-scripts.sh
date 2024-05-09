@@ -18,6 +18,10 @@ function local-dependencies() {
     fi
 }
 
+function pack() {
+    pnpm pack
+}
+
 function gitCommitTagPush() {
     local PN=${PWD##*/}
     local V=$(node -e "const p  = require('./package.json'); console.log(p.version); ")

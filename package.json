@@ -18,7 +18,7 @@
     "test": "NODE_ICU_DATA=node_modules/full-icu jest --runInBand",
     "ws:commit:tag:push": "git commit -a -m \"${npm_config_tag}\" --no-verify && git tag -a ${npm_config_tag} -m \"${npm_config_tag}\" && git push --follow-tags",
     "ws:local-dependencies": "./scripts/ws-scripts.sh workspaces local-dependencies",
-    "ws:pack": "rm -f *.tgz && pnpm run build &&  pnpm -r pack ",
+    "ws:pack": "rm -f *.tgz && pnpm run build &&  ./scripts/ws-scripts.sh every pack",
     "ws:version:list": "./scripts/ws-scripts.sh every version",
     "ws:ts": "pnpm -r ts",
     "ws:version:set:all": "./scripts/ws-scripts.sh every set-version ${npm_config_bump}",

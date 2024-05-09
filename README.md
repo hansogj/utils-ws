@@ -74,7 +74,9 @@ cd -
 
 ```bash
 pnpm run build
-pnpm publish --workspace @hansogj/<name-of-package>
+cd packages/<target>
+pnpm publish
+cd -
 
 ```
 
@@ -82,6 +84,6 @@ or
 
 ```bash
 pnpm run build
-pnpm publish -r
+pnpm -r publish
 
 ```
