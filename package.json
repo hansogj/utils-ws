@@ -21,8 +21,7 @@
     "ws:pack": "rm -f *.tgz && pnpm run build &&  pnpm -r pack ",
     "ws:version:list": "./scripts/ws-scripts.sh every version",
     "ws:ts": "pnpm -r ts",
-    "ws:version:set:package": "./scripts/ws-scripts.sh set-version ${npm_config_package} ${npm_config_bump}",
-    "ws:version:set:all": "./scripts/ws-scripts.sh workspaces set-version ${npm_config_bump}",
+    "ws:version:set:all": "./scripts/ws-scripts.sh every set-version ${npm_config_bump}",
     "update": "npx npm-check-updates --peer -i -t  minor && pnpm run post:update",
     "update:majors": "npx npm-check-updates --peer -i -t latest && pnpm run post:update",
     "post:update": "rm -rfv node_modules && pnpm i"

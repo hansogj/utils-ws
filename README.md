@@ -30,6 +30,7 @@ Dependencies & devDependencies are installed into your new package with
 ```bash
 cd  packages/<target>
 pnpm add some-package
+cd -
 ```
 
 To in make internal dependencies, go to target package and do:
@@ -37,6 +38,7 @@ To in make internal dependencies, go to target package and do:
 ```bash
 cd packages/<target>
 pnpm add --workspace <name-of-package>
+cd -
 ```
 
 ## Test & Build
@@ -52,17 +54,20 @@ These commands will test and build all the packages respectively
 
 ## Versioning
 
-The pnpm-script _ws:version_ will ensure version and tagging are done right:
+The pnpm-script _ws:version:set:all_ will ensure all packages are updated with same strategy, and git tagging is done right
 
 ```bash
-pnpm run ws:version:set:package --package=packages/<name-of-package> --bump=<new-version-number>
+pnpm run ws:version:set:all <strategy: major|minor|patch....>
+
 ```
 
-or as a bump action
+Changing version to a single workspace package, simply enter the package and do
 
 ```bash
-pnpm run ws:version:set:all <major|minor|patch....>
-
+cd packages/<target>
+pnpm version <strategy: major|minor|patch....>
+../../scripts/ws-scripts.sh gitCommitTagPush
+cd -
 ```
 
 ## Publish
