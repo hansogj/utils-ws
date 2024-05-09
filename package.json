@@ -1,6 +1,6 @@
 {
   "name": "@hansogj/utils-ws",
-  "version": "0.1.0-0",
+  "version": "0.1.0",
   "scripts": {
     "preinstall": "npx only-allow pnpm",
     "build": "pnpm -r build",
