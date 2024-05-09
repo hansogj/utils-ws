@@ -28,7 +28,7 @@ export const writeValuesToDraft =
         Key extends SharedKeys<Draft<State>, Action>, // The key must be valid for both the action and the state/draft
         ActionType extends string = Action['type'],
     >(
-        obj: State,
+        obj: State
     ): Producer<State, Action> =>
     (draft: Draft<State>) =>
         Object.entries(obj as unknown as Record<keyof State, State>).forEach(([key, val]) => {

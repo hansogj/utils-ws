@@ -72,7 +72,7 @@ describe('utils', () => {
     describe('fromActionType', () => {
         it('usage example', () =>
             expect(
-                fromActionType<Actions, ActionData>(Actions.INIT).withData('init', 'error')('INIT_VALUE', theError),
+                fromActionType<Actions, ActionData>(Actions.INIT).withData('init', 'error')('INIT_VALUE', theError)
             ).toEqual({
                 type: Actions.INIT,
                 init: 'INIT_VALUE',

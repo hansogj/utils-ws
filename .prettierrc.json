@@ -3,8 +3,8 @@
   "tabWidth": 4,
   "semi": true,
   "printWidth": 120,
-  "bracketSpacing": false,
-  "jsxBracketSameLine": false,
+  "bracketSpacing": true,
+  "bracketSameLine": true,
   "requirePragma": false,
   "trailingComma": "es5",
   "useTabs": false

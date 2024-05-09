@@ -16,7 +16,7 @@ describe('polyfill.array', () => {
 
     describe('[].allDefined]', () => {
         describe.each([[[1, false]], [[1, undefined]]] as Array<any[]>)('%p', (list) =>
-            it('forventer alle elementene i en liste må være definert', () => expect(list.allDefined().length).toBe(0)),
+            it('forventer alle elementene i en liste må være definert', () => expect(list.allDefined().length).toBe(0))
         );
 
         describe.each([[[1, 2]], [[1, 'allDefined']]] as Array<any[]>)('%p ', (list) => {
