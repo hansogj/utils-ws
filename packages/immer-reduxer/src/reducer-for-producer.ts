@@ -11,7 +11,7 @@ import { Producer } from './types';
 export const reducerForProducers =
     <State, Action extends { type: ActionType }, ActionType extends string = Action['type']>(
         initialState: State,
-        producers: { [actionType in ActionType]: Producer<State, Action> },
+        producers: { [actionType in ActionType]: Producer<State, Action> }
     ) =>
     (state: State = initialState, action: Action = {} as Action): State =>
         produce(state, (draft: Draft<State>) => {

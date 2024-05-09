@@ -25,12 +25,11 @@
     "array-from": "^2.1.1"
   },
   "scripts": {
-    "prebuild": "rm -rf dist/",
-    "build": "rm -rf dist/* && npm run build:wp",
+    "build": "rm -rf dist/* && pnpm run build:wp",
     "build:ts": "tsc -p tsconfig.pkg.json",
     "build:wp": "webpack --mode=production --node-env=production --config=webpack.config.js",
     "clean": "rm -rf dist node_modules coverage *.tgz",
-    "prepack": "npm run build",
+    "prepack": "pnpm run build",
     "ts": "tsc --noEmit -p tsconfig.pkg.json"
   },
   "repository": {

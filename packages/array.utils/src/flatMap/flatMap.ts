@@ -4,7 +4,7 @@ declare global {
     interface Array<T> {
         flatMap<U, This = undefined>(
             callback: (this: This, value: T, index: number, array: T[]) => U | ReadonlyArray<U>,
-            thisArg?: This,
+            thisArg?: This
         ): U[];
     }
 }
@@ -15,7 +15,7 @@ Array.prototype.flatMap =
         return Array.prototype.concat.apply(
             [],
             // @ts-ignore
-            this.map(lambda),
+            this.map(lambda)
         );
     };
 export {};

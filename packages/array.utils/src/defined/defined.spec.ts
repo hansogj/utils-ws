@@ -17,14 +17,14 @@ describe('defined', () => {
         'defined of object %p',
         (cond: any) => {
             it('forventer definerte egenskaper', () => expect(defined(cond.a)).toBeFalsy());
-        },
+        }
     );
 
     describe.each([{ a: {} }, { a: [1, 2, 3] }, { a: 'tekstlig innhold' }, { a: true }])(
         'defined of object %p',
         (cond: any) => {
             it('forventer definerte egenskaper', () => expect(defined(cond.a)).toBeTruthy());
-        },
+        }
     );
 
     describe.each([function () {}, () => {}])('defined of function of %p ', (cond: any) => {

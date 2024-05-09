@@ -23,12 +23,11 @@ const configurePackage = (newPackName) => {
             scripts: {
                 ...config.scripts,
                 ...{
-                    prebuild: "rm -rf dist/",
-                    build: "rm -rf dist/* && npm run build:ts",
+                    build: "rm -rf dist/* && pnpm run build:ts",
                     "build:ts": 'tsc -p tsconfig.pkg.json',
                     "build:wp": "webpack --mode=production --node-env=production --config=webpack.config.js",
                     clean: 'rm -rf dist node_modules coverage *.tgz',
-                    prepack: 'npm run build',
+                    prepack: 'pnpm run build',
                     ts: 'tsc --noEmit -p tsconfig.pkg.json',
                 },
             },

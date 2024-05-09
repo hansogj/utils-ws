@@ -16,25 +16,29 @@ This libs are using [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/wor
 ## Install
 
 ```bash
-npm ci
+pnpm i --frozen-lockfile
 ```
 
 ## Add new package
 
 ```bash
-npm run generate -- "<name-of-package>"
+pnpm run generate -- "<name-of-package>"
 ```
 
 Dependencies & devDependencies are installed into your new package with
 
 ```bash
-npm i some-package -w packages/consumer
+cd  packages/<target>
+pnpm add some-package
+cd -
 ```
 
-To in make internal dependencies, do:
+To in make internal dependencies, go to target package and do:
 
 ```bash
-npm i ./packages/target -w packages/<name-of-package>
+cd packages/<target>
+pnpm add --workspace <name-of-package>
+cd -
 ```
 
 ## Test & Build
@@ -42,39 +46,44 @@ npm i ./packages/target -w packages/<name-of-package>
 From root run
 
 ```bash
-npm run test
-npm run build
+pnpm run test
+pnpm run build
 ```
 
 These commands will test and build all the packages respectively
 
 ## Versioning
 
-The npm-script _ws:version_ will ensure version and tagging are done right:
+The pnpm-script _ws:version:set:all_ will ensure all packages are updated with same strategy, and git tagging is done right
 
 ```bash
-npm run ws:version:set:package --package=packages/<name-of-package> --bump=<new-version-number>
+pnpm run ws:version:set:all <strategy: major|minor|patch....>
+
 ```
 
-or as a bump action
+Changing version to a single workspace package, simply enter the package and do
 
 ```bash
-npm run ws:version:set:all <major|minor|patch....>
-
+cd packages/<target>
+pnpm version <strategy: major|minor|patch....>
+../../scripts/ws-scripts.sh gitCommitTagPush
+cd -
 ```
 
 ## Publish
 
 ```bash
-npm run build
-npm publish --workspace @hansogj/<name-of-package>
+pnpm run build
+cd packages/<target>
+pnpm publish
+cd -
 
 ```
 
 or
 
 ```bash
-npm run build
-npm publish --ws
+pnpm run build
+pnpm -r publish
 
 ```

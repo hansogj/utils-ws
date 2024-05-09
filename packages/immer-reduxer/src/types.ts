@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-shadow */
 
-import {Draft} from 'immer';
+import { Draft } from 'immer';
 
 export type ReduxAction = import('redux').Action;
 
