@@ -84,6 +84,6 @@ or
 
 ```bash
 pnpm run build
-pnpm -r publish
+pnpm -r publish --access=public
 
 ```
