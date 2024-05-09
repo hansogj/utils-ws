@@ -28,7 +28,7 @@ jobs:
             - name: Build
               run: |
                   pnpm i --frozen-lockfile
-                  pnpm run pre-commit
                   pnpm run build
+                  pnpm run pre-commit
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
