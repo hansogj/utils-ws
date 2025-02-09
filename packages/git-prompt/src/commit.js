@@ -20,7 +20,8 @@ exec('git rev-parse --abbrev-ref HEAD', async (err, currentBranch) => {
             co.topic.trim(),
         ].join('');
         console.log(`Committing with message ${message}`);
-        exec(`git commit -m "${message}"`);
+        exec(`git commit -m "${message}"`, (_err, stdout) =>
+            setTimeout(() => console.log(stdout), 10));
     } catch (error) {
         console.error(error);
     }
