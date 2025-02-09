@@ -1,0 +1,32 @@
+{
+  "name": "@hansogj/git-prompt",
+  "version": "0.0.1",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist/* && cp src -R dist",
+    "clean": "rm -rf dist node_modules coverage *.tgz",
+    "prepack": "pnpm run build"
+  },
+  "keywords": [],
+  "author": "Hans Ole Gjerdrum (hansogj@gmail.com)",
+  "license": "ISC",
+  "description": "",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hansogj/utils-ws.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hansogj/utils-ws/issues"
+  },
+  "homepage": "https://github.com/hansogj/utils-ws#readme",
+  "dependencies": {
+    "prompts": "^2.4.2"
+  }
+}
