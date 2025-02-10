@@ -1,8 +1,12 @@
 'use strict';
 
+const fs = require('node:fs');
 const { prompt } = require('prompts');
 const { exec } = require('child_process');
 const conventions = require('./conventions');
+
+const args = process.argv.slice(2);
+const msgFile = args[0] || ".git/COMMIT_EDITMSG";
 
 exec('git rev-parse --abbrev-ref HEAD', async (err, currentBranch) => {
     if (err) console.log(err);
@@ -19,9 +23,8 @@ exec('git rev-parse --abbrev-ref HEAD', async (err, currentBranch) => {
             ' ',
             co.topic.trim(),
         ].join('');
-        console.log(`Committing with message ${message}`);
-        exec(`git commit -m "${message}"`, (_err, stdout) =>
-            setTimeout(() => console.log(stdout), 10));
+
+        fs.writeFileSync(msgFile, message);
     } catch (error) {
         console.error(error);
     }
