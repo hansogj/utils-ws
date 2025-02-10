@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist/* && cp src/* -R dist",
+    "build": "rm -rf dist/* && mkdir dist -p && cp src/* -R dist",
     "clean": "rm -rf dist node_modules coverage *.tgz",
     "prepack": "pnpm run build"
   },
