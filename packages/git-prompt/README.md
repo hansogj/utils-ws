@@ -18,21 +18,34 @@ message of the format
 
 where user provides a scope value. The other parts of the message can also be overridden.
 
+## Installation
+
+Install into your npm project
+
+`npm i @hansogj/git-prompt `
+
+or globally on your computer 
+
+`npm i -g @hansogj/git-prompt `
+
 ## Usage
 
-In your git config file, add aliases i.e
+In your git config file (global or local), add aliases i.e
 
 ```
 p-co = "!f() { \
-        node /[PATH-TO]/git-prompt/dist/co.js ;\
+    npx git-prompt-co; \
 }; f"
 
 p-commit = "!f() { \
-        node /[PATH-TO]/git-prompt/dist/commit.js ;\
+    local MSG_FILE=$(git rev-parse --show-toplevel)/.git/COMMIT_EDITMSG; \
+    npx git-prompt-commit $MSG_FILE ; \
+    git commit -F $MSG_FILE $@ ;\
 }; f"
 
 p-add-commit = "!f() { \
-      git add -A && node /[PATH-TO]/git-prompt/dist/commit.js ;\
+    git add -A ; \
+    git p-commit $@ ; \
 }; f"
 
 ```

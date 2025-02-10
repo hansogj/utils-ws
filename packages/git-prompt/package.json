@@ -1,9 +1,14 @@
 {
   "name": "@hansogj/git-prompt",
   "version": "0.0.1",
+  "main": "./dist/co.js",
+  "bin": {
+    "git-prompt-co": "./dist/co.js",
+    "git-prompt-commit": "./dist/commit.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist/* && cp src -R dist",
+    "build": "rm -rf dist/* && cp src/* -R dist",
     "clean": "rm -rf dist node_modules coverage *.tgz",
     "prepack": "pnpm run build"
   },

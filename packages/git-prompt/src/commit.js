@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 'use strict';
 
 const fs = require('node:fs');
@@ -6,7 +8,7 @@ const { exec } = require('child_process');
 const conventions = require('./conventions');
 
 const args = process.argv.slice(2);
-const msgFile = args[0] || ".git/COMMIT_EDITMSG";
+const msgFile = args[0] || '.git/COMMIT_EDITMSG';
 
 exec('git rev-parse --abbrev-ref HEAD', async (err, currentBranch) => {
     if (err) console.log(err);
