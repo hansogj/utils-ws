@@ -14,8 +14,8 @@ exec('git rev-parse --abbrev-ref HEAD', async (err, currentBranch) => {
     if (err) console.log(err);
 
     try {
-        const [type, ticker, topic] = currentBranch.split('/');
-        const co = await prompt(conventions.getQuestions({ type, ticker, topic, action: 'commit' }));
+        const [type, ticker, scope] = currentBranch.split('/');
+        const co = await prompt(conventions.getQuestions({ type, ticker, scope, action: 'commit' }));
         const message = [
             co.type.trim(),
             !!co.scope.trim() ? `(${co.scope.trim()})` : ``,

@@ -16,10 +16,10 @@ exec('git rev-parse --abbrev-ref HEAD', async (err, currentBranch) => {
         const co = await prompt(
             conventions
                 .getQuestions({ type, ticker, topic: '', action: 'branch' })
-                .filter((e) => e.name !== 'scope' && e.name !== 'breaking')
+                .filter((e) => e.name !== 'topic' && e.name !== 'breaking')
         );
 
-        const nextBranch = [co.type, co.ticker, co.topic.split(/\s/).filter(Boolean).join('-')]
+        const nextBranch = [co.type, co.ticker, co.scope.split(/\s/).filter(Boolean).join('-')]
             .filter(Boolean)
             .join('/');
 

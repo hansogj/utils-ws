@@ -2,7 +2,7 @@ const list = ['build', 'chore', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor',
 
 const defaultConvention = list.indexOf('feat');
 
-const getQuestions = ({ type, ticker, topic, action }) => {
+const getQuestions = ({ type, ticker, scope, action }) => {
     const initial = list.indexOf(type) > 0 ? list.indexOf(type) : defaultConvention;
     return [
         {
@@ -15,19 +15,19 @@ const getQuestions = ({ type, ticker, topic, action }) => {
         {
             type: 'text',
             name: 'scope',
+            initial: scope,
             message: `Scope of ${action}`,
         },
         {
             type: 'text',
             name: 'ticker',
             initial: ticker,
-            message: `Ticker number? (ie JIRA-123) - leave blanc if none`,
+            message: `Ticker number? (ie JIRA-123) - leave blank if none`,
         },
         {
             type: 'text',
             name: 'topic',
-            initial: topic,
-            message: `What has changed in ${action}`,
+            message: `What ${action === "branch" ? "will change" : "has changed"} in ${action}`,
         },
 
         {
