@@ -65,7 +65,7 @@
   },
   "jest": {
     "testMatch": [
-      "**/*.spec.{ts,tsx}"
+      "**/*.spec.{ts,tsx,js}"
     ]
   },
   "engines": {

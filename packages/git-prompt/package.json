@@ -1,16 +1,21 @@
 {
   "name": "@hansogj/git-prompt",
-  "version": "0.1.0",
-  "main": "./dist/co.js",
+  "version": "0.2.0",
+  "main": "./dist/co/index.js",
   "bin": {
-    "git-prompt-co": "./dist/co.js",
-    "git-prompt-commit": "./dist/commit.js"
+    "git-prompt-co": "./dist/co/index.js",
+    "git-prompt-commit": "./dist/commit/index.js",
+    "git-prompt-retry": "./dist/retry/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist/* && mkdir dist -p && cp src/* -R dist",
+    "build:co": "npx @vercel/ncc build src/co.js -o dist/co",
+    "build:commit": "npx @vercel/ncc build src/commit.js -o dist/commit",
+    "build:retry": "npx @vercel/ncc build src/retry.js -o dist/retry",
+    "build": "rm -rf dist/* && mkdir dist -p && pnpm run build:co && pnpm run build:commit && pnpm run build:retry",
     "clean": "rm -rf dist node_modules coverage *.tgz",
-    "prepack": "pnpm run build"
+    "prepack": "pnpm run build",
+    "ts": "echo \"Not able to ts js project\" "
   },
   "keywords": [],
   "author": "Hans Ole Gjerdrum (hansogj@gmail.com)",
