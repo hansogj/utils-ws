@@ -3,7 +3,7 @@ const list = ['build', 'chore', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor',
 const defaultConvention = list.indexOf('feat');
 
 const getQuestions = ({ type, ticker, scope, action }) => {
-    const initial = list.indexOf(type) > 0 ? list.indexOf(type) : defaultConvention;
+    const initial = list.indexOf(type) > -1 ? list.indexOf(type) : defaultConvention;
     return [
         {
             type: 'select',
@@ -14,20 +14,22 @@ const getQuestions = ({ type, ticker, scope, action }) => {
         },
         {
             type: 'text',
+            name: 'ticker',
+            initial: ticker,
+            message: `Ticker number? (ie JIRA-123). Leave blank if none`,
+        },
+
+        {
+            type: 'text',
             name: 'scope',
             initial: scope,
             message: `Scope of ${action}`,
-        },
-        {
-            type: 'text',
-            name: 'ticker',
-            initial: ticker,
-            message: `Ticker number? (ie JIRA-123) - leave blank if none`,
+            validate: (value) => (value?.trim().length < 2 ? `Scope should have at least 2 characters` : true),
         },
         {
             type: 'text',
             name: 'topic',
-            message: `What ${action === "branch" ? "will change" : "has changed"} in ${action}`,
+            message: `What ${action === 'branch' ? 'will change' : 'has changed'} in ${action}`,
         },
 
         {
@@ -40,4 +42,5 @@ const getQuestions = ({ type, ticker, scope, action }) => {
 
 module.exports = {
     getQuestions,
+    list,
 };

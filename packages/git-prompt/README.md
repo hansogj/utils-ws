@@ -39,13 +39,16 @@ p-co = "!f() { \
 
 p-commit = "!f() { \
     local MSG_FILE=$(git rev-parse --show-toplevel)/.git/COMMIT_EDITMSG; \
-    npx git-prompt-commit $MSG_FILE ; \
-    git commit -F $MSG_FILE $@ ;\
+    npx git-prompt-commit $MSG_FILE && git commit -F $MSG_FILE $@ ;\
+}; f"
+
+p-retry = "!f() { \
+    local MSG_FILE=$(git rev-parse --show-toplevel)/.git/COMMIT_EDITMSG; \
+    npx git-prompt-retry $MSG_FILE && git add -A && git commit -F $MSG_FILE $@ ;\
 }; f"
 
 p-add-commit = "!f() { \
     git add -A ; \
     git p-commit $@ ; \
 }; f"
-
 ```
