@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ActionDataType, Mutable } from './types';
 import { selectFromRoot, toAction, fromActionType } from './utils';
@@ -73,11 +72,7 @@ describe('utils', () => {
         it('usage example', () =>
             expect(
                 fromActionType<Actions, ActionData>(Actions.INIT).withData('init', 'error')('INIT_VALUE', theError)
-            ).toEqual({
-                type: Actions.INIT,
-                init: 'INIT_VALUE',
-                error: theError,
-            }));
+            ).toEqual({ type: Actions.INIT, init: 'INIT_VALUE', error: theError }));
 
         describe.each([
             [undefined, [], [], { type: undefined }] as any,
