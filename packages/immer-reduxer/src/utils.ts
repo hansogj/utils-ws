@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
-
 import { ActionDataType, Data } from './types';
 
 export const selectFromRoot = <State, Key extends keyof State>(state: State, select: Key): State[Key] =>
@@ -8,10 +6,7 @@ export const selectFromRoot = <State, Key extends keyof State>(state: State, sel
 export const toAction = <T extends string = string, P extends Data = Data>(
     type: T,
     data: Partial<P> = {}
-): ActionDataType<T, P> => ({
-    ...data,
-    type,
-});
+): ActionDataType<T, P> => ({ ...data, type });
 
 export const fromActionType = <Actions extends string = string, ActionData extends string = string>(type: Actions) => ({
     withData:

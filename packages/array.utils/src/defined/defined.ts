@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 export const defined = <T>(prop: T): boolean => {
     if (prop === undefined || prop === null) {
         return false;
