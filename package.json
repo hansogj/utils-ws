@@ -76,8 +76,5 @@
   },
   "volta": {
     "node": "21.7.3"
-  },
-  "workspaces": [
-    "packages/git-prompt"
-  ]
+  }
 }
