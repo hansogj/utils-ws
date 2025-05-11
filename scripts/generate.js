@@ -66,9 +66,15 @@ const generate = (newPackName) => {
     } else {
         console.log(`Creating new package: ${newPackName} `);
         const newPackPath = `./packages/${newPackName}`;
-
-        execSync(`npm init --scope=${scope} -y -w ${newPackPath}`);
+        fs.mkdirSync(newPackPath);
+        process.chdir(newPackPath);
+        console.log(`--> ${process.cwd()}: pnpm init`);
+        execSync(`pnpm init`);
+        process.chdir("../../");
+        console.log(`--> ${process.cwd()}: configuring ${newPackName} `);
         configurePackage(newPackName);
+        console.log(`--> ${process.cwd()}: copying init files `);
+
         copyFiles(['.npmignore', 'tsconfig.pkg.json', 'webpack.config.js'], newPackPath);
         fs.writeFileSync(`${newPackPath}/README.md`, `# ${newPackName.toUpperCase()}`);
         fs.mkdirSync(`${newPackPath}/src`);
