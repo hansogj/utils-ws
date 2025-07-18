@@ -8,7 +8,7 @@ describe('array.flatmap test', function () {
     it('missing lambda should throw', function () {
         // eslint-disable-next-line
         // @ts-ignore
-        expect(() => [].flatMap()).toThrowError(TypeError);
+        expect(() => [].flatMap()).toThrow(TypeError);
     });
 
     it('single level array  should return as is', function () {
