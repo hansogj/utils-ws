@@ -1,6 +1,6 @@
 {
   "name": "@hansogj/git-prompt",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "main": "./dist/co/index.js",
   "bin": {
     "git-prompt-co": "./dist/co/index.js",
