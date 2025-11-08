@@ -42,7 +42,7 @@ const checkout = async (currentBranch) => {
 };
 
 const commit = async (currentBranch) => {
-    const { type, ticker, scope, breaking, topic } = await prompt(
+    const { type, ticker, scope, breaking, topic, extended } = await prompt(
         conventions.getQuestions({ ...splitBranchName(currentBranch), action: 'commit' }))
         .then(trimValues)
 
@@ -55,6 +55,8 @@ const commit = async (currentBranch) => {
         throw Error('Cannot commit with both ticker, scope and topic being empty');
     }
 
+    const message = [topic, extended].filter(Boolean).join('\n\n');
+
 
     return [
         type,
@@ -62,7 +64,7 @@ const commit = async (currentBranch) => {
         !!breaking ? '!' : '',
         !!ticker || topic ? ': ' : '',
         !!ticker ? `[${ticker}]`.replace(/\s/g, "-") + " " : ``,
-        topic,
+        message,
     ].join('').trim();
 
 };

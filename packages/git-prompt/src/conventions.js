@@ -31,13 +31,19 @@ const getQuestions = ({ type, ticker, scope, action }) => {
             name: 'topic',
             message: `What ${action === 'branch' ? 'will change' : 'has changed'} in ${action}`,
         },
+        {
 
+            type: 'text',
+            name: 'extended',
+            message: `Is there more to say? (optional)`,
+            optional: true,
+        },
         {
             type: 'confirm',
             name: 'breaking',
             message: `Is ${action} breaking?`,
         },
-    ];
+    ].filter(({ name }) => name === "extended" ? action === 'commit' : true)
 };
 
 module.exports = {

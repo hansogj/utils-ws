@@ -106,6 +106,13 @@ describe('git-prompts', () => {
                         name: 'topic',
                         type: 'text',
                     },
+
+                    {
+                        message: 'Is there more to say? (optional)',
+                        name: 'extended',
+                        type: 'text',
+                        optional: true,
+                    },
                     {
                         message: 'Is commit breaking?',
                         name: 'breaking',
