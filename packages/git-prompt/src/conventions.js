@@ -35,7 +35,7 @@ const getQuestions = ({ type, ticker, scope, action }) => {
 
             type: 'text',
             name: 'extended',
-            message: `Is it more to say? (optional)`,
+            message: `Is there more to say? (optional)`,
             optional: true,
         },
         {
