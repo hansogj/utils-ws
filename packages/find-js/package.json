@@ -1,6 +1,6 @@
 {
   "name": "@hansogj/find-js",
-  "version": "6.7.3",
+  "version": "6.7.4",
   "description": "Returning an iterable array of the result of  querySelectorAll from root to selector ",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -27,7 +27,7 @@
   "scripts": {
     "build": "rm -rf dist/* && pnpm run build:wp",
     "build:ts": "tsc -p tsconfig.pkg.json",
-    "build:wp": "webpack --mode=production --node-env=production --config=webpack.config.js",
+    "build:wp": "webpack --mode=production --config=webpack.config.js",
     "clean": "rm -rf dist node_modules coverage *.tgz",
     "prepack": "pnpm run build",
     "ts": "tsc --noEmit -p tsconfig.pkg.json"

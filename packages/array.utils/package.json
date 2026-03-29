@@ -1,6 +1,6 @@
 {
   "name": "@hansogj/array.utils",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "utilizes js/ts arrays with onEmpty, defined and flatMap functions",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -9,7 +9,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist/* && pnpm run build:wp",
     "build:ts": "tsc -p tsconfig.pkg.json",
-    "build:wp": "webpack --mode=production --node-env=production --config=webpack.config.js",
+    "build:wp": "webpack --mode=production --config=webpack.config.js",
     "clean": "rm -rf dist node_modules coverage *.tgz",
     "prepack": "pnpm run build",
     "ts": "tsc --noEmit -p tsconfig.pkg.json"
