@@ -18,6 +18,8 @@ const compat = new FlatCompat({
 });
 
 export default defineConfig([{
+    files: ["**/*.{ts,tsx,js,jsx}"],
+
     extends: fixupConfigRules(compat.extends(
         "airbnb-typescript/base",
         "prettier",
@@ -33,8 +35,8 @@ export default defineConfig([{
 
     languageOptions: {
         parser: tsParser,
-        ecmaVersion: 5,
-        sourceType: "script",
+        ecmaVersion: "latest",
+        sourceType: "module",
 
         parserOptions: {
             project: "./tsconfig.eslint.json",

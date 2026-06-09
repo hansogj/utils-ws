@@ -1,0 +1,18 @@
+{
+    "extends": "./tsconfig.build.json",
+    "compilerOptions": {
+        "allowJs": true,
+        "allowSyntheticDefaultImports": true,
+        "sourceMap": true,
+        "declaration": true,
+        "moduleResolution": "node",
+        "noImplicitAny": true,
+        "lib": [
+            "dom",
+            "DOM.Iterable",
+            "es6",
+            "es5",
+            "es2019"
+        ]
+    }
+}

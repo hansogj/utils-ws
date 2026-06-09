@@ -7,7 +7,7 @@
     "circularity:check": "madge  --warning --extensions ts,tsx ./packages",
     "clean": "pnpm -r  clean  && rm -rf node_modules *.tgz surefire-reports",
     "generate": "node -- ./scripts/generate.js",
-    "lint": "npx eslint packages/**/src --ext .js,.jsx,.ts,.tsx",
+    "lint": "npx eslint packages/**/src",
     "pre-commit": "pnpm run ws:ts && pnpm run circularity:check && pnpm run lint && pnpm test",
     "prepack": "rm -f *.tgz && pnpm run build",
     "prettier:write": "prettier --write 'packages/**/*.{ts,tsx,js,jsx}'",
