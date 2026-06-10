@@ -1,0 +1,15 @@
+{
+    "extends": "../../tsconfig.pkg.base.json",
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "ES2020",
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "declaration": false,
+        "outDir": "./dist/",
+        "rootDir": "./src"
+    },
+    "include": [
+        "src/**/*.ts"
+    ]
+}

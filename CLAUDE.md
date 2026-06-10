@@ -62,7 +62,7 @@ pnpm-workspace monorepo (`pnpm-workspace.yaml` → `packages/*`) of independentl
 
 - `array.utils`, `find-js`, `abonnement-js` — webpack + ts-loader (`build:wp`), UMD output with `libraryTarget: 'umd'`, entry `src/index.ts`, output to `dist/index.js`. The shared `webpack.build.js` at the root provides the rules; each package's `webpack.config.js` extends it with `entry`/`output`.
 - `immer-reduxer` — `tsc` only (no webpack bundle), declarations emitted to `dist/`. `peerDependencies` cover `immer`, `redux`, `react-redux`.
-- `git-prompt` — plain JS (no TypeScript). Built with `@vercel/ncc` into three CLI binaries (`git-prompt-co`, `git-prompt-commit`, `git-prompt-retry`) exposed via `bin` in its `package.json`. Its `ts` script is a no-op (`echo "Not able to ts js project"`), so it's effectively skipped by `pnpm run ws:ts`.
+- `git-prompt` — TypeScript (CommonJS). Built with `@vercel/ncc` into three CLI binaries (`git-prompt-co`, `git-prompt-commit`, `git-prompt-retry`) exposed via `bin` in its `package.json`. ncc auto-discovers `tsconfig.json` in the package directory (not `tsconfig.pkg.json` like the other packages); `declaration: false` keeps the bundles from emitting stray `.d.ts` files. The `ts` script runs real `tsc --noEmit`.
 
 **Dependency direction.** Internal deps use `workspace:*`. Currently `abonnement-js` depends on `array.utils`. Keep the graph acyclic — `pnpm run circularity:check` (madge) is part of `pre-commit` and will fail the commit on cycles.
 

@@ -9,13 +9,13 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:co": "npx @vercel/ncc build src/co.js -o dist/co",
-    "build:commit": "npx @vercel/ncc build src/commit.js -o dist/commit",
-    "build:retry": "npx @vercel/ncc build src/retry.js -o dist/retry",
+    "build:co": "npx @vercel/ncc build src/co.ts -o dist/co",
+    "build:commit": "npx @vercel/ncc build src/commit.ts -o dist/commit",
+    "build:retry": "npx @vercel/ncc build src/retry.ts -o dist/retry",
     "build": "rm -rf dist/* && mkdir dist -p && pnpm run build:co && pnpm run build:commit && pnpm run build:retry",
     "clean": "rm -rf dist node_modules coverage *.tgz",
     "prepack": "pnpm run build",
-    "ts": "echo \"Not able to ts js project\" "
+    "ts": "tsc --noEmit -p tsconfig.json"
   },
   "keywords": [],
   "author": "Hans Ole Gjerdrum (hansogj@gmail.com)",
@@ -38,5 +38,8 @@
   "homepage": "https://github.com/hansogj/utils-ws#readme",
   "dependencies": {
     "prompts": "^2.4.2"
+  },
+  "devDependencies": {
+    "@types/prompts": "^2.4.9"
   }
 }

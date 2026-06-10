@@ -1,9 +1,18 @@
+type Action = 'branch' | 'commit';
+
+interface QuestionArgs {
+    type?: string;
+    ticker?: string;
+    scope?: string;
+    action: Action;
+}
+
 const list = ['build', 'chore', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor', 'style', 'test'];
 
 const defaultConvention = list.indexOf('feat');
 
-const getQuestions = ({ type, ticker, scope, action }) => {
-    const initial = list.indexOf(type) > -1 ? list.indexOf(type) : defaultConvention;
+const getQuestions = ({ type, ticker, scope, action }: QuestionArgs) => {
+    const initial = type !== undefined && list.indexOf(type) > -1 ? list.indexOf(type) : defaultConvention;
     return [
         {
             type: 'select',
@@ -18,13 +27,13 @@ const getQuestions = ({ type, ticker, scope, action }) => {
             initial: ticker,
             message: `Ticker number? (ie JIRA-123). Leave blank if none`,
         },
-
         {
             type: 'text',
             name: 'scope',
             initial: scope,
             message: `Scope of ${action}`,
-            validate: (value) => (value?.trim().length < 2 ? `Scope should have at least 2 characters` : true),
+            validate: (value: string | undefined) =>
+                (value?.trim().length ?? 0) < 2 ? `Scope should have at least 2 characters` : true,
         },
         {
             type: 'text',
@@ -32,7 +41,6 @@ const getQuestions = ({ type, ticker, scope, action }) => {
             message: `What ${action === 'branch' ? 'will change' : 'has changed'} in ${action}`,
         },
         {
-
             type: 'text',
             name: 'extended',
             message: `Is there more to say? (optional)`,
@@ -43,10 +51,7 @@ const getQuestions = ({ type, ticker, scope, action }) => {
             name: 'breaking',
             message: `Is ${action} breaking?`,
         },
-    ].filter(({ name }) => name === "extended" ? action === 'commit' : true)
+    ].filter(({ name }) => (name === 'extended' ? action === 'commit' : true));
 };
 
-module.exports = {
-    getQuestions,
-    list,
-};
+export { getQuestions, list };
