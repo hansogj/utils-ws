@@ -32,11 +32,13 @@ Do **not** use `pnpm run ws:version:set:all` — it calls `gitCommitTagPush` whi
 Workspace's `pnpm run update` uses `-i` (interactive) which can't run from a skill. Use ncu non-interactively instead:
 
 ```bash
-npx npm-check-updates --peer --target minor --root --workspaces
+npx npm-check-updates --peer --target minor
 pnpm run post:update
 ```
 
-`.ncurc.json` has `upgrade: true`, so the first command writes the changes immediately — there is no separate "dry run then apply" step. `post:update` deletes node_modules and runs `pnpm i` cleanly.
+`.ncurc.json` has `upgrade: true`, so the first command writes the changes immediately — there is no separate "dry run then apply" step. It also already sets `root: true` and `workspaces: true`; do **not** pass `--root --workspaces` on the CLI — in this ncu version those flags suppress traversal and the run reports "No dependencies." Rely on the rc file.
+
+`post:update` deletes node_modules and runs `pnpm i` cleanly.
 
 Note `--peer` makes ncu honor peer-dependency constraints, so it'll skip upgrades that would break them. That's expected — those candidates will resurface in the majors pass.
 
@@ -54,7 +56,7 @@ If anything fails: **stop, do not proceed to majors.** Report what broke; let th
 ## Step 4 — Major dep updates
 
 ```bash
-npx npm-check-updates --peer --target latest --root --workspaces
+npx npm-check-updates --peer --target latest
 pnpm run post:update
 ```
 
