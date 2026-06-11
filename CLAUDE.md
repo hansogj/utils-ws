@@ -50,7 +50,7 @@ cd packages/<target> && pnpm add --workspace <name-of-package>
 - Single-package bump: `cd packages/<target> && pnpm version <strategy> && ../../scripts/ws-scripts.sh gitCommitTagPush`
 - Publish: `pnpm run build && pnpm -r publish --access=public` (or per package).
 
-`scripts/ws-scripts.sh` is the dispatcher. It exposes `every <fn>` (iterate every package and run `<fn>` inside it) and `workspaces <fn>` (call `<fn>` once per package, passing the path). All `ws:*` npm scripts delegate to it.
+`scripts/ws-scripts.sh` is the dispatcher. It holds the three helpers that don't have clean pnpm built-ins: `version` (current-vs-published comparison), `gitCommitTagPush` (custom `<pkg-name>@<version>` tag format), and `set-version` (the two combined). The `ws:*` npm scripts that need per-package iteration use `pnpm -r exec ../../scripts/ws-scripts.sh <fn>` rather than a hand-rolled loop.
 
 ## Architecture
 
