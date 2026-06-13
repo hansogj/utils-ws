@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Package manager
 
-pnpm is enforced via `preinstall: only-allow pnpm`. Do not run `npm install` or `yarn` — they will be rejected. Lockfile is `pnpm-lock.yaml`.
+pnpm is enforced via `preinstall: only-allow pnpm`. Do not run `npm install` or `yarn` — they will be rejected. Lockfile is `pnpm-lock.yaml`. The project `.npmrc` pins `inject-workspace-packages=true` so the lockfile and CI agree regardless of any contributor's global `~/.npmrc`; if `pnpm i` warns about unknown pnpm-style configs leaking from global, expect a similar CI `ERR_PNPM_LOCKFILE_CONFIG_MISMATCH` next time one of them gets baked into the lockfile — pin it here.
 
 ## Common commands
 
