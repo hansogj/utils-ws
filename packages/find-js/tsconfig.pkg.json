@@ -1,24 +1,9 @@
 {
-    "extends": "../../tsconfig.build.json",
+    "extends": "../../tsconfig.pkg.base.json",
     "compilerOptions": {
-        "allowJs": true,
-        "allowSyntheticDefaultImports": true,
-        "declaration": true,
-        "lib": [
-            "dom",
-            "DOM.Iterable",
-            "es6",
-            "es5",
-            "es2019"
-        ],
-        "module": "ESNext",
-        "noImplicitAny": true,
-        "moduleResolution": "node",
-        "outDir": "./dist/",
-        "sourceMap": true,
-        "target": "ESNext",
+        "outDir": "./dist/"
     },
     "include": [
-        "src/*.ts",
+        "src/*.ts"
     ]
 }

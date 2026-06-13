@@ -1,5 +1,7 @@
 # IMMER-REDUXER
 
+> ⚠️ **DEPRECATED** — this package is no longer maintained. Pin an existing version if you need it; do not adopt it for new projects.
+
 ```bash
 npm install -s @hansogj/immer-reduxer
 ```
