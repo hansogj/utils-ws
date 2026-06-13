@@ -7,19 +7,24 @@ interface QuestionArgs {
     action: Action;
 }
 
-const list = ['build', 'chore', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor', 'style', 'test'];
+const list = ['build', 'chore', 'ci', 'docs', 'feat', 'fix', 'perf', 'refactor', 'style', 'test', 'wip'];
 
-const defaultConvention = list.indexOf('feat');
+const commitOnly = new Set(['chore', 'docs', 'wip']);
+
+const typesFor = (action: Action): string[] =>
+    action === 'commit' ? list : list.filter((t) => !commitOnly.has(t));
 
 const getQuestions = ({ type, ticker, scope, action }: QuestionArgs) => {
-    const initial = type !== undefined && list.indexOf(type) > -1 ? list.indexOf(type) : defaultConvention;
+    const choices = typesFor(action);
+    const defaultIndex = choices.indexOf('feat');
+    const initial = type !== undefined && choices.indexOf(type) > -1 ? choices.indexOf(type) : defaultIndex;
     return [
         {
             type: 'select',
             name: 'type',
             message: `Type of ${action}?`,
             initial,
-            choices: list.map((value) => ({ value, title: value })),
+            choices: choices.map((value) => ({ value, title: value })),
         },
         {
             type: 'text',
@@ -54,4 +59,4 @@ const getQuestions = ({ type, ticker, scope, action }: QuestionArgs) => {
     ].filter(({ name }) => (name === 'extended' ? action === 'commit' : true));
 };
 
-export { getQuestions, list };
+export { getQuestions, list, typesFor };

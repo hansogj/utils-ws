@@ -1,6 +1,6 @@
 import prompts from 'prompts';
 import * as gitPrompts from './git-prompts';
-import { list } from './conventions';
+import { list, typesFor } from './conventions';
 
 jest.mock('prompts');
 
@@ -8,7 +8,25 @@ const mockedPrompts = prompts as unknown as jest.Mock;
 
 describe('git-prompts', () => {
     describe('questions', () => {
-        const commonCases: Array<[string, { initialType?: number; ticker?: string; scope?: string }]> = [
+        const branchCases: Array<[string, { initialType?: number; ticker?: string; scope?: string }]> = [
+            ['', { initialType: 2 }],
+            ['main', { initialType: 2 }],
+            ['master', { initialType: 2 }],
+            ['feature', { initialType: 2 }],
+            ['build', { initialType: 0 }],
+            ['chore', { initialType: 2 }],
+            ['ci', { initialType: 1 }],
+            ['docs', { initialType: 2 }],
+            ['feat', { initialType: 2 }],
+            ['fix', { initialType: 3 }],
+            ['perf', { initialType: 4 }],
+            ['refactor', { initialType: 5 }],
+            ['style', { initialType: 6 }],
+            ['test', { initialType: 7 }],
+            ['wip', { initialType: 2 }],
+        ];
+
+        const commitCases: Array<[string, { initialType?: number; ticker?: string; scope?: string }]> = [
             ['', { initialType: 4 }],
             ['main', { initialType: 4 }],
             ['master', { initialType: 4 }],
@@ -23,22 +41,23 @@ describe('git-prompts', () => {
             ['refactor', { initialType: 7 }],
             ['style', { initialType: 8 }],
             ['test', { initialType: 9 }],
+            ['wip', { initialType: 10 }],
         ];
 
         describe('checkout', () => {
             describe.each([
-                ...commonCases,
-                ['main/AI', { initialType: 4 }],
-                ['feat/AI', { initialType: 4 }],
-                ['fix/AI', { initialType: 5 }],
-                ['fix/AI/got-it-all-wrong', { ticker: 'AI', initialType: 5, scope: '' }],
-                ['fix/-/got-it-all-wrong', { ticker: '-', initialType: 5, scope: '' }],
+                ...branchCases,
+                ['main/AI', { initialType: 2 }],
+                ['feat/AI', { initialType: 2 }],
+                ['fix/AI', { initialType: 3 }],
+                ['fix/AI/got-it-all-wrong', { ticker: 'AI', initialType: 3, scope: '' }],
+                ['fix/-/got-it-all-wrong', { ticker: '-', initialType: 3, scope: '' }],
             ] as Array<[string, { initialType?: number; ticker?: string; scope?: string }]>)(
                 'when current branch is %j',
                 (currentBranch, expected) => {
-                    const questions = ({ initialType = 4, ticker, scope = '' }: { initialType?: number; ticker?: string; scope?: string } = {}) => [
+                    const questions = ({ initialType = 2, ticker, scope = '' }: { initialType?: number; ticker?: string; scope?: string } = {}) => [
                         {
-                            choices: list.map((value) => ({ value, title: value })),
+                            choices: typesFor('branch').map((value) => ({ value, title: value })),
                             initial: initialType,
                             message: 'Type of branch?',
                             name: 'type',
@@ -76,7 +95,7 @@ describe('git-prompts', () => {
 
         describe('commit', () => {
             describe.each([
-                ...commonCases,
+                ...commitCases,
                 ['main/AI', { initialType: 4, scope: 'AI' }],
                 ['feat/AI', { initialType: 4, scope: 'AI' }],
                 ['fix/AI', { initialType: 5, scope: 'AI' }],
@@ -227,6 +246,8 @@ describe('git-prompts', () => {
                     { type: 'feat', ticker: 'ABC-123', scope: 'AI', topic: 'done lots of things' },
                     'feat(AI): [ABC-123] done lots of things',
                 ],
+                [{ type: 'wip', scope: 'AI' }, 'wip(AI)'],
+                [{ type: 'wip', topic: 'half done' }, 'wip: half done'],
             ])('when given answers is %j', (answers, expected) => {
                 let result = '';
                 beforeEach(async () => {
