@@ -1,5 +1,8 @@
 # GIT-PROMPT
 
+[![npm version](https://img.shields.io/npm/v/@hansogj/git-prompt)](https://www.npmjs.com/package/@hansogj/git-prompt)
+[![known vulnerabilities](https://snyk.io/test/npm/@hansogj/git-prompt/badge.svg)](https://snyk.io/test/npm/@hansogj/git-prompt)
+
 Simple generator of branch names and commit messages. 
 
 ### Checkout

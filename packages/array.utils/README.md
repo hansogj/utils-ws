@@ -1,5 +1,9 @@
 # ARRAY.UTILS
 
+[![npm version](https://img.shields.io/npm/v/@hansogj/array.utils)](https://www.npmjs.com/package/@hansogj/array.utils)
+[![known vulnerabilities](https://snyk.io/test/npm/@hansogj/array.utils/badge.svg)](https://snyk.io/test/npm/@hansogj/array.utils)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@hansogj/array.utils)](https://bundlephobia.com/package/@hansogj/array.utils)
+
 List of content:
 
 -   [defined](./src/defined/README.md)
