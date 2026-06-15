@@ -73,9 +73,6 @@
     "webpack-cli": "7.0.3",
     "webpack-dev-server": "5.2.5"
   },
-  "dependencies": {
-    "@hansogj/maybe": "2.7.0"
-  },
   "pnpm": {
     "overrides": {
       "fast-uri@<3.1.2": ">=3.1.2",

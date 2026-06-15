@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "pnpm run clean && mkdir dist && cp -rL ../../node_modules/@hansogj node_modules/shared dist && cp index.html style.css src/ dist/. -R",
+    "build": "pnpm run clean && mkdir dist && cp -rL node_modules/@hansogj node_modules/shared dist && cp index.html style.css src/ dist/. -R",
     "start": "pnpm exec http-server -p 2112 dist",
     "test": "echo \"No test specified - all good\"; exit 0"
   },
@@ -14,7 +14,7 @@
     "@hansogj/abonnement-js": "workspace:*",
     "@hansogj/array.utils": "workspace:*",
     "@hansogj/find-js": "workspace:*",
-    "@hansogj/maybe": "2.7.0",
+    "@hansogj/maybe": "workspace:*",
     "http-server": "14.1.1"
   }
 }

@@ -16,7 +16,7 @@
     "@hansogj/abonnement-js": "workspace:*",
     "@hansogj/array.utils": "workspace:*",
     "@hansogj/find-js": "workspace:*",
-    "@hansogj/maybe": "2.7.0",
+    "@hansogj/maybe": "workspace:*",
     "http-server": "14.1.1"
   },
   "devDependencies": {
