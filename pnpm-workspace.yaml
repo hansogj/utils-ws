@@ -1,2 +1,9 @@
 packages:
-  - "./packages/*"
+  - ./packages/*
+  - ./apps/*
+  - ./harness/shared
+
+onlyBuiltDependencies:
+  - '@hansogj/maybe'
+  - '@parcel/watcher'
+  - unrs-resolver

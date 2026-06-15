@@ -1,0 +1,27 @@
+{
+  "name": "web-ts",
+  "private": true,
+  "author": "@hansogj",
+  "version": "0.0.0",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "webpack --config ./webpack.config.js",
+    "serve": "webpack serve --config ./webpack.config.js",
+    "start": "pnpm exec http-server -p 3113 dist",
+    "test": "jest --config=./jest.config.ts",
+    "test:watch": "pnpm run test --watchAll"
+  },
+  "dependencies": {
+    "shared": "workspace:*",
+    "@hansogj/abonnement-js": "workspace:*",
+    "@hansogj/array.utils": "workspace:*",
+    "@hansogj/find-js": "workspace:*",
+    "@hansogj/maybe": "2.7.0",
+    "http-server": "14.1.1"
+  },
+  "devDependencies": {
+    "ts-loader": "9.5.4",
+    "ts-node": "10.9.2",
+    "typescript": "6.0.2"
+  }
+}

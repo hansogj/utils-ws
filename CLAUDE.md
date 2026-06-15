@@ -74,4 +74,34 @@ pnpm-workspace monorepo (`pnpm-workspace.yaml` → `packages/*`) of independentl
 
 ## Pre-commit hook
 
-`.husky/pre-commit` runs `pnpm run pre-commit`, which fails the commit if any of {`ws:ts`, `circularity:check`, `lint`, `test`} fail. Don't `--no-verify` to bypass — fix the underlying issue. (Note: the `ws:commit:tag:push` and `gitCommitTagPush` helpers do use `--no-verify` *intentionally* for release commits.)
+`.husky/pre-commit` runs `pnpm run pre-commit`, which fails the commit if any of {`ws:ts`, `circularity:check`, `lint`, `test`, `harness:test`} fail. Don't `--no-verify` to bypass — fix the underlying issue. (Note: the `ws:commit:tag:push` and `gitCommitTagPush` helpers do use `--no-verify` *intentionally* for release commits.)
+
+## Integration harness (`apps/*` + `harness/shared`)
+
+End-to-end verification of the published `@hansogj/*` packages in three consumption modes. Migrated from the separate `package-test-utils` repo — workspace-linked, not registry-installed (the tradeoff: packaging bugs in `files`/`main`/`exports` won't be caught here, only by an actual `pnpm publish`).
+
+- `apps/web-cs` — CommonJS `require()` consumer (port **4114**), jest + jsdom.
+- `apps/web-ts` — TypeScript/ESM `import` consumer (port **3113**), jest + jsdom + ts-loader.
+- `apps/web-js` — plain `<script>` tag consumer (port **2112**), no bundler/jest. Its `build` script copies `node_modules/@hansogj` and `shared` into `dist/`.
+- `harness/shared` — workspace-local lib imported as `require('shared')`. Exports `verify`, `suite`, `html`, `dependencies`, `versions`, plus `webpack.common.config.js` that the apps' webpack configs extend.
+- `harness/docker/` — Dockerfile + docker-compose for running all three apps in containers.
+
+**Versions are a single source of truth.** `harness/shared/scripts/build-deps.js` reads `packages/<pkg>/package.json` for the three workspace packages plus `node_modules/@hansogj/maybe/package.json`, and writes `harness/shared/src/deps.json`. Both `shared/src/index.js` (the `versions` field) and `shared/webpack.common.config.js` (HtmlWebpackPlugin parameters) consume this file. Regenerate via `pnpm --filter shared build`; it also runs automatically on `pnpm i` via the `prepare` script.
+
+Common commands:
+
+```bash
+pnpm run harness:build      # builds shared + all three apps
+pnpm run harness:test       # jest in web-cs + web-ts (web-js has no tests)
+pnpm web-ts serve           # http://localhost:3113 (alias for `pnpm --filter web-ts serve`)
+pnpm web-cs serve           # http://localhost:4114
+pnpm web-js start           # http://localhost:2112  (needs `pnpm web-js build` first)
+
+# Docker — tear down any existing instance first so stale containers/images don't linger
+docker compose -f harness/docker/docker-compose.yml down && \
+  docker compose -f harness/docker/docker-compose.yml up
+```
+
+**`@hansogj/maybe`** is still installed from the npm registry (its repo hasn't been folded in). If you bump it, do so in the root `dependencies` block — the deps generator picks it up from `node_modules`.
+
+**When adding a new `packages/*` workspace package** that the harness should verify: add it to `workspacePackages` in `harness/shared/scripts/build-deps.js`, and update the consumer code in `apps/web-{cs,ts,js}/src/run.{js,ts}` plus the hardcoded list in `apps/web-js/index.html`.

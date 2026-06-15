@@ -1,0 +1,75 @@
+:root {
+    --black: #000;
+    --white: #fff;
+    --gray-xtra-light: #bbb;
+    --gray: #333333;
+    --blue-dark: #1a2636;
+    --blue-light: #68abef;
+    --blue-xtra-light: #8ccdff;
+    --blue-alt: #adbbc961;
+    --pink: #fa9f9f;
+    --pink-alt: #b67f7f;
+    --error: #cc4444;
+    --success: #26d137;
+    --green-weird: #5a9456;
+    --green-dark: #688567;
+}
+
+body {
+    background-color: var(--gray);
+    font-family: 'Source Sans Pro', 'Lucida Grande', sans-serif;
+    font-size: 18px;
+}
+
+body > div {
+    background-color: var(--white);
+    color: var(--blue-dark);
+    margin: 20px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px var(--blue-alt);
+}
+a {
+    color: var(--blue-dark);
+}
+
+body > div > #verification {
+    background-color: var(--gray);
+    padding: 20px;
+    border-radius: 5px;
+    border: var(--gray-xtra-light) 5px inset;
+}
+
+#verification > pre {
+    font-family: 'Courier New', Courier, monospace;
+    padding: 0;
+    margin: 0;
+}
+
+#verification > pre.error {
+    color: var(--error);
+}
+
+#verification > h3 {
+    color: var(--blue-light);
+}
+
+#verification > h2 {
+    color: var(--blue-alt);
+}
+
+#verification > pre.error {
+    color: var(--error);
+    border-left: solid 2px var(--error);
+}
+
+#verification > pre.success {
+    color: var(--success);
+    border-left: solid 2px var(--success);
+}
+
+#verification > h3,
+#verification > pre {
+    padding-left: 8px;
+    margin-bottom: 0;
+}

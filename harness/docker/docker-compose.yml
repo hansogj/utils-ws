@@ -1,0 +1,28 @@
+name: harness
+
+services:
+  web-js:
+    build:
+      context: ../..
+      dockerfile: harness/docker/Dockerfile
+      target: web-js
+    image: web-js:latest
+    ports:
+      - '2112:2112'
+  web-ts:
+    build:
+      context: ../..
+      dockerfile: harness/docker/Dockerfile
+      target: web-ts
+    image: web-ts:latest
+    ports:
+      - '3113:3113'
+
+  web-cs:
+    build:
+      context: ../..
+      dockerfile: harness/docker/Dockerfile
+      target: web-cs
+    image: web-cs:latest
+    ports:
+      - '4114:4114'

@@ -24,10 +24,28 @@ jobs:
                   node-version: ${{ matrix.node-version }}
                   cache: pnpm
 
-            - name: Build
-              run: |
-                  pnpm i --frozen-lockfile
-                  pnpm run build
-                  pnpm run pre-commit
+            - name: Install
+              run: pnpm i --frozen-lockfile
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+            - name: Build packages
+              run: pnpm run build
+
+            - name: TypeScript check
+              run: pnpm run ws:ts
+
+            - name: Circularity check
+              run: pnpm run circularity:check
+
+            - name: Lint
+              run: pnpm run lint
+
+            - name: Test packages
+              run: pnpm test
+
+            - name: Build harness apps
+              run: pnpm run harness:build
+
+            - name: Test harness apps
+              run: pnpm run harness:test

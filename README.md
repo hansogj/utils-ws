@@ -47,11 +47,29 @@ cd -
 From root run
 
 ```bash
-pnpm run test
 pnpm run build
+pnpm run test
 ```
 
-These commands will test and build all the packages respectively
+`build` must run before `test` — the unit tests resolve internal dependencies through each package's `main` (`dist/index.js`), so a clean checkout needs to be built first. CI and the pre-commit hook both follow this order.
+
+## Integration harness
+
+End-to-end verification that the published packages work in three consumption modes — CommonJS, TypeScript/ESM and plain `<script>` tags. Lives under `apps/` (workspace-linked, not installed from npm) with shared helpers under `harness/shared`.
+
+```bash
+pnpm run harness:build      # builds shared + all three apps
+pnpm run harness:test       # jest in web-cs + web-ts (web-js has no tests)
+pnpm web-ts serve           # http://localhost:3113
+pnpm web-cs serve           # http://localhost:4114
+pnpm web-js start           # http://localhost:2112 (needs `pnpm web-js build` first)
+
+# Run all three in containers (tears down any existing instance first)
+docker compose -f harness/docker/docker-compose.yml down && \
+  docker compose -f harness/docker/docker-compose.yml up
+```
+
+Versions shown in the apps come from a single source of truth: `harness/shared/scripts/build-deps.js` reads `packages/<pkg>/package.json` (workspace packages) and `node_modules/@hansogj/maybe/package.json` (external) and writes `harness/shared/src/deps.json`. The generator runs automatically on `pnpm i` via the `prepare` script.
 
 ## Versioning
 
