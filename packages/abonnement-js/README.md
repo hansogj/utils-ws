@@ -1,5 +1,9 @@
 # abonnement-js
 
+[![npm version](https://img.shields.io/npm/v/@hansogj/abonnement-js)](https://www.npmjs.com/package/@hansogj/abonnement-js)
+[![known vulnerabilities](https://snyk.io/test/npm/@hansogj/abonnement-js/badge.svg)](https://snyk.io/test/npm/@hansogj/abonnement-js)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/@hansogj/abonnement-js)](https://bundlephobia.com/package/@hansogj/abonnement-js)
+
 lightweight, naive, event susbscription
 
 ## Simple excample
