@@ -29,6 +29,9 @@ jobs:
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
+            - name: Build packages
+              run: pnpm run build
+
             - name: TypeScript check
               run: pnpm run ws:ts
 
@@ -37,9 +40,6 @@ jobs:
 
             - name: Lint
               run: pnpm run lint
-
-            - name: Build packages
-              run: pnpm run build
 
             - name: Test packages
               run: pnpm test
