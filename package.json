@@ -8,13 +8,18 @@
     "clean": "pnpm -r  clean  && rm -rf node_modules *.tgz surefire-reports",
     "generate": "node -- ./scripts/generate.js",
     "lint": "npx eslint packages/**/src",
-    "pre-commit": "pnpm run ws:ts && pnpm run circularity:check && pnpm run lint && pnpm test",
+    "pre-commit": "pnpm run ws:ts && pnpm run circularity:check && pnpm run lint && pnpm test && pnpm run harness:test",
     "prepack": "rm -f *.tgz && pnpm run build",
     "prettier:write": "prettier --write 'packages/**/*.{ts,tsx,js,jsx}'",
     "test:ci": "pnpm run test --ci  --reporters=default --reporters=jest-junit",
     "test:coverage": "pnpm run test:ci --coverage",
     "test:watch": "pnpm run test --watch",
     "test": "NODE_ICU_DATA=node_modules/full-icu jest --runInBand",
+    "harness:build": "pnpm -r --filter './harness/*' --filter './apps/*' build",
+    "harness:test": "pnpm -r --filter './apps/*' test",
+    "web-ts": "pnpm --filter web-ts",
+    "web-cs": "pnpm --filter web-cs",
+    "web-js": "pnpm --filter web-js",
     "ws:commit:tag:push": "git commit -a -m \"${npm_config_tag}\" --no-verify && git tag -a ${npm_config_tag} -m \"${npm_config_tag}\" && git push --follow-tags",
     "ws:local-dependencies": "pnpm list -r --depth 0",
     "ws:pack": "rm -f *.tgz && pnpm run build && pnpm -r exec pnpm pack",
@@ -36,27 +41,39 @@
     "@types/node": "25.9.2",
     "@typescript-eslint/eslint-plugin": "7.18.0",
     "@typescript-eslint/parser": "7.18.0",
+    "babel-jest": "30.3.0",
     "babel-loader": "10.1.1",
+    "css-loader": "7.1.4",
     "eslint": "9.25.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-airbnb-typescript": "18.0.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-import": "2.32.0",
     "eslint-plugin-prettier": "5.5.6",
+    "html-webpack-plugin": "5.6.6",
     "husky": "9.1.7",
     "jest": "30.4.2",
     "jest-config": "30.4.2",
     "jest-environment-jsdom": "30.4.1",
     "jest-junit": "16.0.0",
     "jest-transform-stub": "2.0.0",
+    "jsdom": "29.0.1",
     "madge": "8.0.0",
     "prettier": "3.8.4",
+    "raw-loader": "4.0.2",
+    "sass": "1.98.0",
+    "sass-loader": "16.0.7",
+    "style-loader": "4.0.0",
     "ts-jest": "29.4.11",
     "ts-loader": "9.6.0",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
     "webpack": "5.107.2",
-    "webpack-cli": "7.0.3"
+    "webpack-cli": "7.0.3",
+    "webpack-dev-server": "5.2.3"
+  },
+  "dependencies": {
+    "@hansogj/maybe": "2.7.0"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
@@ -68,7 +85,11 @@
   },
   "jest": {
     "testMatch": [
-      "**/*.spec.{ts,tsx,js}"
+      "<rootDir>/packages/**/*.spec.{ts,tsx,js}"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>/apps/",
+      "<rootDir>/harness/"
     ]
   },
   "engines": {

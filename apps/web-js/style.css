@@ -1,0 +1,21 @@
+@import '/shared/style/index.css';
+
+body {
+    background-color: var(--blue-dark);
+}
+
+body > div {
+    border-radius: 0;
+    background-color: var(--black);
+    color: var(--pink);
+    box-shadow: 5px 5px 15px #3333331f;
+}
+a {
+    color: var(--pink-alt);
+}
+
+body > div > #verification {
+    background-color: var(--blue-dark);
+    color: var(--black);
+    border-color: var(--pink-alt);
+}

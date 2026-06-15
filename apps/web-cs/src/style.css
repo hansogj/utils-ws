@@ -1,0 +1,14 @@
+@import '~shared/style';
+body > div {
+    background-color: var(--green-weird);
+    color: var(--blue-dark);
+    box-shadow: 5px 5px 15px var(--green-dark);
+}
+
+body > div > #verification {
+    border-color: var(--green-dark);
+}
+
+a {
+    color: var(--blue-dark);
+}

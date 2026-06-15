@@ -1,0 +1,20 @@
+{
+  "name": "shared",
+  "private": true,
+  "version": "0.0.0",
+  "author": "@hansogj",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "module": "src/index.js",
+  "files": [
+    "src",
+    "webpack.*"
+  ],
+  "scripts": {
+    "prepare": "node ./scripts/build-deps.js",
+    "build": "node ./scripts/build-deps.js",
+    "clean": "rm -rf src/deps.json",
+    "test": "echo \"Error: no test specified\""
+  },
+  "dependencies": {}
+}

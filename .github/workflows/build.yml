@@ -28,6 +28,7 @@ jobs:
               run: |
                   pnpm i --frozen-lockfile
                   pnpm run build
+                  pnpm run harness:build
                   pnpm run pre-commit
               env:
                   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
