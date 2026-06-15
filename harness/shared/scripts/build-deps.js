@@ -2,8 +2,7 @@
 /*
  * Single source of truth for the dependency/version map used by the harness apps.
  *
- * Workspace packages: read version from `packages/<pkg>/package.json`.
- * External packages (e.g. @hansogj/maybe): read from the installed `node_modules/<pkg>/package.json`.
+ * All entries are workspace packages: read version from `packages/<pkg>/package.json`.
  *
  * Output: harness/shared/src/deps.json — consumed by shared/src/index.js (the `versions` field)
  * and by shared/webpack.common.config.js (HtmlWebpackPlugin templateParameters).
@@ -18,9 +17,8 @@ const workspacePackages = [
   '@hansogj/abonnement-js',
   '@hansogj/array.utils',
   '@hansogj/find-js',
+  '@hansogj/maybe',
 ];
-
-const externalPackages = ['@hansogj/maybe'];
 
 const readVersion = (pkgJsonPath, pkgName) => {
   if (!fs.existsSync(pkgJsonPath)) {
@@ -36,10 +34,6 @@ const deps = {};
 for (const name of workspacePackages) {
   const dir = name.replace(/^@hansogj\//, '');
   deps[name] = readVersion(path.join(repoRoot, 'packages', dir, 'package.json'), name);
-}
-
-for (const name of externalPackages) {
-  deps[name] = readVersion(path.join(repoRoot, 'node_modules', name, 'package.json'), name);
 }
 
 const outPath = path.resolve(__dirname, '..', 'src', 'deps.json');

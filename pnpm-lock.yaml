@@ -14,10 +14,6 @@ overrides:
 importers:
 
   .:
-    dependencies:
-      '@hansogj/maybe':
-        specifier: 2.7.0
-        version: 2.7.0
     devDependencies:
       '@babel/core':
         specifier: 7.29.7
@@ -152,8 +148,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/find-js
       '@hansogj/maybe':
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: workspace:*
+        version: link:../../packages/maybe
       http-server:
         specifier: 14.1.1
         version: 14.1.1
@@ -173,8 +169,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/find-js
       '@hansogj/maybe':
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: workspace:*
+        version: link:../../packages/maybe
       http-server:
         specifier: 14.1.1
         version: 14.1.1
@@ -194,8 +190,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/find-js
       '@hansogj/maybe':
-        specifier: 2.7.0
-        version: 2.7.0
+        specifier: workspace:*
+        version: link:../../packages/maybe
       http-server:
         specifier: 14.1.1
         version: 14.1.1
@@ -253,6 +249,8 @@ importers:
       redux:
         specifier: ^5.0.1
         version: 5.0.1
+
+  packages/maybe: {}
 
 packages:
 
@@ -1065,10 +1063,6 @@ packages:
     peerDependenciesMeta:
       '@noble/hashes':
         optional: true
-
-  '@hansogj/maybe@2.7.0':
-    resolution: {integrity: sha512-EoYaefYZ6t5Wo2ttolRZ4QML2IWdNasYFBG0zf56i/Kig72hdjY8APiFn7SAYw95qSZTa53kJde4lo1kkCPbaQ==}
-    engines: {node: ^ 21 || ^ 22 || ^24 || ^ 25}
 
   '@humanfs/core@0.19.1':
     resolution: {integrity: sha512-5DyQ4+1JEUzejeK1JGICcideyfUbGixgS9jNgex5nqkW+cY7WZhxBigmieN5Qnw9ZosSNVC9KQKyb+GUaGyKUA==}
@@ -6295,8 +6289,6 @@ snapshots:
       levn: 0.4.1
 
   '@exodus/bytes@1.15.1': {}
-
-  '@hansogj/maybe@2.7.0': {}
 
   '@humanfs/core@0.19.1': {}
 

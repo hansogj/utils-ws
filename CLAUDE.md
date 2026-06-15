@@ -60,7 +60,7 @@ pnpm-workspace monorepo (`pnpm-workspace.yaml` → `packages/*`) of independentl
 
 **Build pipelines differ by package — do not assume one shape:**
 
-- `array.utils`, `find-js`, `abonnement-js` — webpack + ts-loader (`build:wp`), UMD output with `libraryTarget: 'umd'`, entry `src/index.ts`, output to `dist/index.js`. The shared `webpack.build.js` at the root provides the rules; each package's `webpack.config.js` extends it with `entry`/`output`.
+- `array.utils`, `find-js`, `abonnement-js`, `maybe` — webpack + ts-loader (`build:wp`), UMD output with `libraryTarget: 'umd'`. The shared `webpack.build.js` at the root provides the rules; each package's `webpack.config.js` extends it with `entry`/`output`. Entry is `src/index.ts` → `dist/index.js` for the first three; `maybe` is the outlier — single-file `src/maybe.ts` → `dist/maybe.js` (filename preserved for the published 2.x contract and the script-tag consumer in `apps/web-js`).
 - `immer-reduxer` — `tsc` only (no webpack bundle), declarations emitted to `dist/`. `peerDependencies` cover `immer`, `redux`, `react-redux`.
 - `git-prompt` — TypeScript (CommonJS). Built with `@vercel/ncc` into three CLI binaries (`git-prompt-co`, `git-prompt-commit`, `git-prompt-retry`) exposed via `bin` in its `package.json`. ncc auto-discovers `tsconfig.json` in the package directory (not `tsconfig.pkg.json` like the other packages); `declaration: false` keeps the bundles from emitting stray `.d.ts` files. The `ts` script runs real `tsc --noEmit`.
 
