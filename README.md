@@ -6,13 +6,18 @@ This libs are using [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/wor
 
 ## Workspaces
 
-- [immer-reduxer](./packages/immer-reduxer/README.md)
 - [find-js](./packages/find-js/README.md)
 - [abonnement-js](./packages/abonnement-js/README.md)
 - [array.utils](./packages/array.utils/README.md)
 - [git-prompt](./packages/git-prompt/README.md)
 
 [//]: <> (package-list-placeholder-do-not-remove)
+
+### Deprecated
+
+No longer maintained. Pin an existing version if you need them; do not adopt them for new projects.
+
+- [immer-reduxer](./packages/immer-reduxer/README.md)
 
 ## Install
 
