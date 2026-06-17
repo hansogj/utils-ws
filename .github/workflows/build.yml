@@ -55,3 +55,14 @@ jobs:
 
             - name: E2E harness apps (Playwright)
               run: pnpm run harness:e2e
+
+            - name: Upload Playwright report on failure
+              if: failure()
+              uses: actions/upload-artifact@v6
+              with:
+                  name: playwright-report-node-${{ matrix.node-version }}
+                  path: |
+                      harness/e2e/playwright-report/
+                      harness/e2e/test-results/
+                  retention-days: 7
+                  if-no-files-found: ignore
