@@ -1,3 +1,7 @@
+// UMD output for the (theoretical) script-tag consumer.
+// Filename `abonnement.js` preserved so the published 4.x path keeps working.
+// ESM (`abonnement.mjs`) + CJS (`abonnement.cjs`) outputs come from vite (see
+// vite.config.ts).
 const path = require('path');
 const webpack = require('../../webpack.build.js');
 const config = webpack();

@@ -3,7 +3,26 @@
   "version": "4.7.5",
   "description": "lightweight naive event subscription",
   "main": "./dist/abonnement.js",
+  "module": "./dist/abonnement.mjs",
   "types": "./dist/abonnement.d.ts",
+  "unpkg": "./dist/abonnement.js",
+  "exports": {
+    ".": {
+      "types": "./dist/abonnement.d.ts",
+      "import": "./dist/abonnement.mjs",
+      "require": "./dist/abonnement.cjs",
+      "default": "./dist/abonnement.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": [
     "event",
     "typescript",
@@ -14,10 +33,11 @@
     "@hansogj/array.utils": "workspace:*"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist/* && pnpm run build:wp",
-    "build:ts": "tsc -p tsconfig.pkg.json",
-    "build:wp": "webpack --mode=production --config=webpack.config.js",
+    "test": "echo \"see root jest\" && exit 0",
+    "build": "rm -rf dist && pnpm run build:ts && pnpm run build:esm && pnpm run build:umd",
+    "build:ts": "tsc -p tsconfig.pkg.json --emitDeclarationOnly --declaration",
+    "build:esm": "vite build",
+    "build:umd": "webpack --mode=production --config=webpack.config.cjs",
     "clean": "rm -rf dist node_modules coverage *.tgz",
     "prepack": "pnpm run build",
     "ts": "tsc --noEmit -p tsconfig.pkg.json"
@@ -28,11 +48,12 @@
   },
   "author": "Hans Ole Gjerdrum (hansogj@gmail.com)",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "bugs": {
     "url": "https://github.com/hansogj/utils-ws/issues"
   },
-  "homepage": "https://github.com/hansogj/utils-ws#readme",
-  "files": [
-    "dist"
-  ]
+  "homepage": "https://github.com/hansogj/utils-ws#readme"
 }
