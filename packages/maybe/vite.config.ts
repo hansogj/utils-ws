@@ -17,5 +17,16 @@ export default defineConfig({
       formats: ['es', 'cjs'],
       fileName: (format) => `maybe.${format === 'es' ? 'mjs' : 'cjs'}`,
     },
+    rollupOptions: {
+      output: {
+        // Force `exports.default = X` in CJS even if some future refactor leaves
+        // only a default export. Today maybe has both `Maybe` (named) and `maybe`
+        // (default), so rollup naturally uses the object form — but adding this
+        // explicitly future-proofs against the trap that bit find-js (#37):
+        // default-only modules get unwrapped to `module.exports = X`, breaking
+        // consumers that do `require(...).default`.
+        exports: 'named',
+      },
+    },
   },
 });
