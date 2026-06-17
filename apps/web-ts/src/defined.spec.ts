@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import '@hansogj/array.utils/dist/defined';
+import '@hansogj/array.utils/defined';
 
 describe('defined', () => {
     describe('defined', () => {

@@ -2,14 +2,47 @@
   "name": "@hansogj/array.utils",
   "version": "2.7.5",
   "description": "utilizes js/ts arrays with onEmpty, defined and flatMap functions",
-  "main": "./dist/index.js",
+  "type": "module",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "unpkg": "./dist/index.umd.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.umd.js"
+    },
+    "./defined": {
+      "types": "./dist/defined/index.d.ts",
+      "import": "./dist/defined/index.js",
+      "require": "./dist/defined/index.cjs"
+    },
+    "./onEmpty": {
+      "types": "./dist/onEmpty/index.d.ts",
+      "import": "./dist/onEmpty/index.js",
+      "require": "./dist/onEmpty/index.cjs"
+    },
+    "./flatMap": {
+      "types": "./dist/flatMap/index.d.ts",
+      "import": "./dist/flatMap/index.js",
+      "require": "./dist/flatMap/index.cjs"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": [
+    "./dist/index.*",
+    "./dist/defined/index.*",
+    "./dist/onEmpty/index.*"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist/* && pnpm run build:wp",
-    "build:ts": "tsc -p tsconfig.pkg.json",
-    "build:wp": "webpack --mode=production --config=webpack.config.js",
+    "build": "rm -rf dist && pnpm run build:ts && pnpm run build:esm && pnpm run build:umd",
+    "build:ts": "tsc -p tsconfig.pkg.json --emitDeclarationOnly --declaration",
+    "build:esm": "vite build",
+    "build:umd": "webpack --mode=production --config=webpack.config.cjs",
     "clean": "rm -rf dist node_modules coverage *.tgz",
     "prepack": "pnpm run build",
     "ts": "tsc --noEmit -p tsconfig.pkg.json"
@@ -27,6 +60,9 @@
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": [
     "defined",
     "properties"
