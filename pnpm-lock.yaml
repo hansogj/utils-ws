@@ -228,11 +228,7 @@ importers:
 
   packages/array.utils: {}
 
-  packages/find-js:
-    dependencies:
-      array-from:
-        specifier: ^2.1.1
-        version: 2.1.1
+  packages/find-js: {}
 
   packages/git-prompt:
     dependencies:
@@ -2175,9 +2171,6 @@ packages:
 
   array-flatten@1.1.1:
     resolution: {integrity: sha512-PCVAQswWemu6UdxsDFFX/+gVeYqKAod3D3UVm91jHwynguOwAvYPhx8nNlM++NqRcK6CxxpUafjmhIdKiHibqg==}
-
-  array-from@2.1.1:
-    resolution: {integrity: sha512-GQTc6Uupx1FCavi5mPzBvVT7nEOeWMmUA9P95wpfpW1XwMSKs+KaymD5C2Up7KAUKg/mYwbsUYzdZWcoajlNZg==}
 
   array-includes@3.1.9:
     resolution: {integrity: sha512-FmeCCAenzH0KH381SPT5FZmiA/TmpndpcaShhfgEN9eCVjnFBqq3l1xrI42y8+PPLI6hypzou4GXw00WHmPBLQ==}
@@ -7822,8 +7815,6 @@ snapshots:
       is-array-buffer: 3.0.5
 
   array-flatten@1.1.1: {}
-
-  array-from@2.1.1: {}
 
   array-includes@3.1.9:
     dependencies:
