@@ -3,11 +3,26 @@
   "version": "2.7.0",
   "description": "Maybe monad — safe handling of optional/nullable values",
   "main": "./dist/maybe.js",
-  "module": "./dist/maybe.js",
+  "module": "./dist/maybe.mjs",
   "types": "./dist/maybe.d.ts",
+  "unpkg": "./dist/maybe.js",
+  "exports": {
+    ".": {
+      "types": "./dist/maybe.d.ts",
+      "import": "./dist/maybe.mjs",
+      "require": "./dist/maybe.cjs",
+      "default": "./dist/maybe.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": [
     "maybe",
     "monad",
@@ -17,9 +32,10 @@
   ],
   "scripts": {
     "test": "echo \"see root jest\" && exit 0",
-    "build": "rm -rf dist/* && pnpm run build:wp",
-    "build:ts": "tsc -p tsconfig.pkg.json",
-    "build:wp": "webpack --mode=production --config=webpack.config.js",
+    "build": "rm -rf dist && pnpm run build:ts && pnpm run build:esm && pnpm run build:umd",
+    "build:ts": "tsc -p tsconfig.pkg.json --emitDeclarationOnly --declaration",
+    "build:esm": "vite build",
+    "build:umd": "webpack --mode=production --config=webpack.config.cjs",
     "clean": "rm -rf dist node_modules coverage *.tgz",
     "prepack": "pnpm run build",
     "ts": "tsc --noEmit -p tsconfig.pkg.json"
