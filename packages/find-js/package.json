@@ -1,13 +1,29 @@
 {
   "name": "@hansogj/find-js",
   "version": "6.7.5",
-  "description": "Returning an iterable array of the result of  querySelectorAll from root to selector ",
-  "main": "./dist/index.js",
+  "description": "Returning an iterable array of the result of querySelectorAll from root to selector",
+  "type": "module",
+  "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "unpkg": "./dist/index.umd.js",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.umd.js"
+    },
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
   "files": [
     "dist"
   ],
+  "engines": {
+    "node": ">=18"
+  },
   "keywords": [
     "find",
     "select",
@@ -16,18 +32,16 @@
     "array"
   ],
   "author": "Hans Ole Gjerdrum (hansogj@gmail.com)",
+  "license": "MIT",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "license": "MIT",
-  "dependencies": {
-    "array-from": "^2.1.1"
-  },
   "scripts": {
-    "build": "rm -rf dist/* && pnpm run build:wp",
-    "build:ts": "tsc -p tsconfig.pkg.json",
-    "build:wp": "webpack --mode=production --config=webpack.config.js",
+    "build": "rm -rf dist && pnpm run build:ts && pnpm run build:esm && pnpm run build:umd",
+    "build:ts": "tsc -p tsconfig.pkg.json --emitDeclarationOnly --declaration",
+    "build:esm": "vite build",
+    "build:umd": "webpack --mode=production --config=webpack.config.cjs",
     "clean": "rm -rf dist node_modules coverage *.tgz",
     "prepack": "pnpm run build",
     "ts": "tsc --noEmit -p tsconfig.pkg.json"
