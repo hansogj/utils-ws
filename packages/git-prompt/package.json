@@ -1,29 +1,31 @@
 {
   "name": "@hansogj/git-prompt",
   "version": "0.5.2",
-  "main": "./dist/co/index.js",
+  "description": "Interactive prompts for git branch names and commit messages along the conventional-commits convention",
+  "type": "commonjs",
   "bin": {
     "git-prompt-co": "./dist/co/index.js",
     "git-prompt-commit": "./dist/commit/index.js",
     "git-prompt-retry": "./dist/retry/index.js"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:co": "npx @vercel/ncc build src/co.ts -o dist/co",
-    "build:commit": "npx @vercel/ncc build src/commit.ts -o dist/commit",
-    "build:retry": "npx @vercel/ncc build src/retry.ts -o dist/retry",
-    "build": "rm -rf dist/* && mkdir dist -p && pnpm run build:co && pnpm run build:commit && pnpm run build:retry",
-    "clean": "rm -rf dist node_modules coverage *.tgz",
-    "prepack": "pnpm run build",
-    "ts": "tsc --noEmit -p tsconfig.json"
+  "exports": {
+    "./package.json": "./package.json"
   },
-  "keywords": [],
-  "author": "Hans Ole Gjerdrum (hansogj@gmail.com)",
-  "license": "ISC",
-  "description": "",
+  "engines": {
+    "node": ">=18"
+  },
   "files": [
     "dist"
   ],
+  "keywords": [
+    "git",
+    "cli",
+    "prompt",
+    "conventional-commits",
+    "branch-name"
+  ],
+  "author": "Hans Ole Gjerdrum (hansogj@gmail.com)",
+  "license": "ISC",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -36,6 +38,16 @@
     "url": "https://github.com/hansogj/utils-ws/issues"
   },
   "homepage": "https://github.com/hansogj/utils-ws#readme",
+  "scripts": {
+    "test": "echo \"see root jest\" && exit 0",
+    "build:co": "npx @vercel/ncc build src/co.ts -o dist/co",
+    "build:commit": "npx @vercel/ncc build src/commit.ts -o dist/commit",
+    "build:retry": "npx @vercel/ncc build src/retry.ts -o dist/retry",
+    "build": "rm -rf dist/* && mkdir dist -p && pnpm run build:co && pnpm run build:commit && pnpm run build:retry",
+    "clean": "rm -rf dist node_modules coverage *.tgz",
+    "prepack": "pnpm run build",
+    "ts": "tsc --noEmit -p tsconfig.json"
+  },
   "dependencies": {
     "prompts": "^2.4.2"
   },
