@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-import '@hansogj/array.utils/dist/onEmpty';
+import '@hansogj/array.utils/onEmpty';
 import find from '@hansogj/find-js';
 
 const template = `

@@ -18,6 +18,7 @@
     "test": "NODE_ICU_DATA=node_modules/full-icu jest --runInBand",
     "harness:build": "pnpm -r --filter './harness/*' --filter './apps/*' build",
     "harness:test": "pnpm -r --filter './apps/*' test",
+    "harness:e2e": "pnpm --filter e2e test",
     "web-ts": "pnpm --filter web-ts",
     "web-cs": "pnpm --filter web-cs",
     "web-js": "pnpm --filter web-js",
@@ -69,6 +70,7 @@
     "ts-loader": "9.6.0",
     "ts-node": "10.9.2",
     "typescript": "5.9.3",
+    "vite": "8.0.16",
     "webpack": "5.107.2",
     "webpack-cli": "7.0.3",
     "webpack-dev-server": "5.2.5"

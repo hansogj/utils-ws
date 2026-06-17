@@ -3,11 +3,10 @@
     "compilerOptions": {
         "outDir": "./dist/"
     },
-    "files": [
-        "src/index.ts",
-        "src/defined/defined.ts",
-        "src/defined/polyfill.ts",
-        "src/onEmpty/index.ts",
-        "src/flatMap/index.ts"
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "**/*.spec.ts"
     ]
 }

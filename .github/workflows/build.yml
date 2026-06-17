@@ -49,3 +49,9 @@ jobs:
 
             - name: Test harness apps
               run: pnpm run harness:test
+
+            - name: Install Playwright browser
+              run: pnpm --filter e2e exec playwright install --with-deps chromium
+
+            - name: E2E harness apps (Playwright)
+              run: pnpm run harness:e2e
