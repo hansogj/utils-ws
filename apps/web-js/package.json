@@ -5,7 +5,7 @@
   "version": "0.0.0",
   "scripts": {
     "clean": "rm -rf dist",
-    "build": "pnpm run clean && mkdir dist && cp -rL node_modules/@hansogj node_modules/shared dist && cp index.html style.css src/ dist/. -R",
+    "build": "pnpm run clean && mkdir dist && cp -rL node_modules/@hansogj node_modules/shared dist && cp index.html style.css src/ dist/. -R && node scripts/inject-deps.cjs",
     "start": "pnpm exec http-server -p 2112 dist",
     "test": "echo \"No test specified - all good\"; exit 0"
   },

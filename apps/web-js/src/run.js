@@ -6,6 +6,7 @@ window.run = () => {
     const maybe = window.maybe.default;
     const suite = window.suite;
     suite("Include by script tag")
+        .before(window.dependencies)
         .test("hello void", () => verify("hello", () => "javascript").toEqual("javascript"))
         .test("array.onEmpty", () => {
             verify("[] should be empty]", () => [].onEmpty((o) => o.push("is empty")).shift()).toEqual("is empty");
@@ -20,13 +21,10 @@ window.run = () => {
             verify("array first", () => ["first", "second"].first()).toEqual(["first"]);
 
         }).test("find.js", () => {
-
-            verify("li:", () => find("li", window.document.body).map((e) => e.innerText)).toEqual([
-                "@hansogj/find-js",
-                "@hansogj/array.utils",
-                "@hansogj/maybe",
-                "@hansogj/abonnement-js"
-            ]);
+            const versions = JSON.parse(document.querySelector('[data-dependencies]').textContent);
+            verify("li:", () => find("li", window.document.body).map((e) => e.innerText)).toEqual(
+                Object.entries(versions).map(([k, v]) => `${k}@v${v}`)
+            );
         }).test("maybe", () => {
             verify("maybe should filter defined elements", () =>
                 maybe(find("ul"))

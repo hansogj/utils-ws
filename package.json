@@ -18,6 +18,7 @@
     "test": "NODE_ICU_DATA=node_modules/full-icu jest --runInBand",
     "harness:build": "pnpm -r --filter './harness/*' --filter './apps/*' build",
     "harness:test": "pnpm -r --filter './apps/*' test",
+    "harness:e2e": "pnpm --filter e2e test",
     "web-ts": "pnpm --filter web-ts",
     "web-cs": "pnpm --filter web-cs",
     "web-js": "pnpm --filter web-js",

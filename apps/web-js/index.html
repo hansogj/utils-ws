@@ -5,6 +5,7 @@
         <title>[TestUtil: Dinosaur JS]</title>
         <script src="@hansogj/find-js/dist/index.js"></script>
         <script src="@hansogj/array.utils/dist/index.umd.js"></script>
+        <script src="@hansogj/array.utils/dist/defined/index.umd.js"></script>
         <script src="@hansogj/maybe/dist/maybe.js"></script>
         <link href="/style.css" rel="stylesheet" />
     </head>
@@ -12,20 +13,10 @@
         <div>
             <h1>Dinosaur Javascript!</h1>
 
-            <ul>
-                <li>
-                    <a href="https://www.npmjs.com/package/@hansogj/find-js">@hansogj/find-js</a>
-                </li>
-                <li>
-                    <a href="https://www.npmjs.com/package/@hansogj/array.utils">@hansogj/array.utils</a>
-                </li>
-                <li>
-                    <a href="https://www.npmjs.com/package/@hansogj/maybe">@hansogj/maybe</a>
-                </li>
-                <li>
-                    <a href="https://www.npmjs.com/package/@hansogj/abonnement-js">@hansogj/abonnement-js</a>
-                </li>
-            </ul>
+            <script data-dependencies type="text/json">
+                <%= dependencies %>
+            </script>
+            <ul data-ul></ul>
 
             <div id="verification"></div>
         </div>
@@ -33,6 +24,7 @@
 
     <script src="/shared/src/verify.js"></script>
     <script src="/shared/src/test.suite.js"></script>
+    <script src="/shared/src/dependencies.js"></script>
     <script src="./src/run.js"></script>
     <script type="text/javascript">
         window.run();
