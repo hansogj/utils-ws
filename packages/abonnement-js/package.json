@@ -3,7 +3,6 @@
   "version": "4.7.5",
   "description": "lightweight naive event subscription",
   "main": "./dist/abonnement.js",
-  "module": "./dist/abonnement.mjs",
   "types": "./dist/abonnement.d.ts",
   "unpkg": "./dist/abonnement.js",
   "exports": {

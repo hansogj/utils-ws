@@ -2,31 +2,29 @@
   "name": "@hansogj/array.utils",
   "version": "2.7.5",
   "description": "utilizes js/ts arrays with onEmpty, defined and flatMap functions",
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "unpkg": "./dist/index.umd.js",
+  "unpkg": "./dist/index.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
-      "default": "./dist/index.umd.js"
+      "default": "./dist/index.js"
     },
     "./defined": {
       "types": "./dist/defined/index.d.ts",
-      "import": "./dist/defined/index.js",
+      "import": "./dist/defined/index.mjs",
       "require": "./dist/defined/index.cjs"
     },
     "./onEmpty": {
       "types": "./dist/onEmpty/index.d.ts",
-      "import": "./dist/onEmpty/index.js",
+      "import": "./dist/onEmpty/index.mjs",
       "require": "./dist/onEmpty/index.cjs"
     },
     "./flatMap": {
       "types": "./dist/flatMap/index.d.ts",
-      "import": "./dist/flatMap/index.js",
+      "import": "./dist/flatMap/index.mjs",
       "require": "./dist/flatMap/index.cjs"
     },
     "./dist/*": "./dist/*",
@@ -38,7 +36,7 @@
     "./dist/onEmpty/index.*"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"see root jest\" && exit 0",
     "build": "rm -rf dist && pnpm run build:ts && pnpm run build:esm && pnpm run build:umd",
     "build:ts": "tsc -p tsconfig.pkg.json --emitDeclarationOnly --declaration",
     "build:esm": "vite build",
