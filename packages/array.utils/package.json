@@ -1,7 +1,7 @@
 {
   "name": "@hansogj/array.utils",
-  "version": "2.7.5",
-  "description": "utilizes js/ts arrays with onEmpty, defined and flatMap functions",
+  "version": "3.0.0",
+  "description": "utilizes js/ts arrays with onEmpty and defined functions",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "unpkg": "./dist/index.js",
@@ -21,11 +21,6 @@
       "types": "./dist/onEmpty/index.d.ts",
       "import": "./dist/onEmpty/index.mjs",
       "require": "./dist/onEmpty/index.cjs"
-    },
-    "./flatMap": {
-      "types": "./dist/flatMap/index.d.ts",
-      "import": "./dist/flatMap/index.mjs",
-      "require": "./dist/flatMap/index.cjs"
     },
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
