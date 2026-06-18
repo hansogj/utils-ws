@@ -8,24 +8,36 @@ Returns an iterable array of node-elements.
 
 ## Usage
 
-### JS
+### ESM (bundler / Node ≥18)
 
 ```js
-// either
-const find = require("@hansogj/find-js").default;
+import find from '@hansogj/find-js';
 
-//or
-<script src="../node_modules/@hansogj/find-js/dist/index.js"></script>
-const find = window.find.default;
-
-----
 console.log(find('h2', window.document.body));
 ```
 
-### TS
+### CommonJS
+
+```js
+const find = require('@hansogj/find-js').default;
+
+console.log(find('h2', window.document.body));
+```
+
+### Vanilla `<script>` tag
+
+```html
+<script src="../node_modules/@hansogj/find-js/dist/index.js"></script>
+<script>
+  const find = window.find.default;
+  console.log(find('h2', window.document.body));
+</script>
+```
+
+### TypeScript
 
 ```ts
-import find from 'find-js';
+import find from '@hansogj/find-js';
 
 console.log(find('h2', window.document.body));
 ```

@@ -66,6 +66,7 @@ End-to-end verification that the published packages work in three consumption mo
 ```bash
 pnpm run harness:build      # builds shared + all three apps
 pnpm run harness:test       # jest in web-cs + web-ts (web-js has no tests)
+pnpm run harness:e2e        # Playwright headless against all three apps (CI runs this; not in pre-commit)
 pnpm web-ts serve           # http://localhost:3113
 pnpm web-cs serve           # http://localhost:4114
 pnpm web-js start           # http://localhost:2112 (needs `pnpm web-js build` first)
@@ -75,7 +76,9 @@ docker compose -f harness/docker/docker-compose.yml down && \
   docker compose -f harness/docker/docker-compose.yml up
 ```
 
-Versions shown in the apps come from a single source of truth: `harness/shared/scripts/build-deps.js` reads `packages/<pkg>/package.json` (workspace packages) and `node_modules/@hansogj/maybe/package.json` (external) and writes `harness/shared/src/deps.json`. The generator runs automatically on `pnpm i` via the `prepare` script.
+Versions shown in the apps come from a single source of truth: `harness/shared/scripts/build-deps.js` reads `packages/<pkg>/package.json` for every workspace package and writes `harness/shared/src/deps.json`. The generator runs automatically on `pnpm i` via the `prepare` script.
+
+The Playwright suite lives in `harness/e2e/` — it boots http-servers for the three built apps via `playwright.config.ts`'s `webServer` block and asserts on the rendered DOM (heading, version list, success/error `<pre>` counts). Catches build-time regressions that the in-process jest tests miss — e.g. the tree-shaking-vs-polyfill issue that surfaced during the array.utils modernization.
 
 ## Versioning
 

@@ -8,20 +8,14 @@ import '@hansogj/array.utils';
 
 ```typescript
 // import as functions
-import {defined, definedList} from 'array.utils';
+import { defined, definedList } from '@hansogj/array.utils';
 
 defined(null); // => false
 defined(undefined); // => false
-definedList([1, 2]); // => [1,2]
-definedList([undefined, null]) // => []
-    [
-        // filter first
-        (1, 2, 3)
-    ].first() // => [1]
-    [
-        // filter last
-        (1, 2, 3)
-    ].last(); // => [3]
+definedList([1, 2]); // => [1, 2]
+definedList([undefined, null]); // => []
+[1, 2, 3].first(); // => [1]
+[1, 2, 3].last(); // => [3]
 ```
 
 ### Template for wrapping immutable lists
@@ -51,16 +45,26 @@ const {defined, definedList} = arrayDefined;
 console.log(defined([1])); // => [1]
 ```
 
+### Usage as a clean ESM sub-entry
+
+```ts
+import { defined, definedList } from '@hansogj/array.utils/defined';
+
+defined(null); // => false
+definedList([1, undefined, 2]); // => [1, 2]
+```
+
 ### Usage with Vanilla js
 
-```js
-// index.html
+```html
+<!-- index.html -->
 <script src="../node_modules/@hansogj/array.utils/dist/index.js"></script>
 <script src="../node_modules/@hansogj/array.utils/dist/defined/index.js"></script>
-
-// index.js
-const {defined, definedList} = window.defined;
-console.log(defined([1])); // => [1]
+<script>
+  // window globals exposed by each UMD bundle
+  const { defined, definedList } = window.defined;
+  console.log(defined([1])); // => [1]
+</script>
 ```
 
 ## Breaking v2.0.0
