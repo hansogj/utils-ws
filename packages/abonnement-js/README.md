@@ -6,27 +6,21 @@
 
 lightweight, naive, event susbscription
 
-## Simple excample
+## Simple example
 
 ```typescript
-import {
-  Abonnement,
-  JoinedAbonnement,
-  AlleAbonnementer,
-} from "../src/abonnement";
+import { Abonnement, JoinedAbonnement, AlleAbonnementer } from '@hansogj/abonnement-js';
 
-
-let stringAbonnement: Abonnement<String> =  new Abonnement<String>("start value")
-stringAbonnement.abonner(e => console.log("current value is " + e);
-stringAbonnement.varsle("updated value")
-
+const stringAbonnement: Abonnement<string> = new Abonnement<string>('start value');
+stringAbonnement.abonner((e) => console.log('current value is ' + e));
+stringAbonnement.varsle('updated value');
 ```
 
-Inspect the [test](src/abonnement.spec.ts)-file for usage
+Inspect the [test](src/abonnement.spec.ts) file for more usage patterns.
 
 ## Develop
 
-`npm ci & npm build` to build this pack
+This package is part of the [`@hansogj/utils-ws`](https://github.com/hansogj/utils-ws) monorepo — see the root README for build, test and release flow.
 
 ## Breaking v4.0.0
 
