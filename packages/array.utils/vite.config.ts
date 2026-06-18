@@ -1,8 +1,12 @@
 import { defineConfig } from 'vite';
 
-// ESM (.js) + CJS (.cjs) for each entry point. Types come from tsc (build:ts).
-// UMD comes from webpack (build:umd) so the script-tag consumer in apps/web-js
-// keeps working — Vite's library mode can only emit UMD for single-entry libs.
+// ESM (.mjs) + CJS (.cjs) per entry. Types come from tsc (build:ts).
+// UMD `.js` per entry comes from webpack (build:umd) so the script-tag
+// consumer in apps/web-js keeps working — Vite's library mode can only emit
+// UMD for single-entry libs.
+//
+// Filename convention is harmonized across all libraries:
+//   .mjs = ESM, .cjs = CJS, .js = UMD (no `"type": "module"` in package.json).
 export default defineConfig({
   build: {
     emptyOutDir: false,
@@ -16,7 +20,7 @@ export default defineConfig({
         'flatMap/index': 'src/flatMap/index.ts',
       },
       formats: ['es', 'cjs'],
-      fileName: (format, name) => `${name}.${format === 'es' ? 'js' : 'cjs'}`,
+      fileName: (format, name) => `${name}.${format === 'es' ? 'mjs' : 'cjs'}`,
     },
     rollupOptions: {
       // Polyfill modules (defined/polyfill.ts, onEmpty/onEmpty.ts) mutate

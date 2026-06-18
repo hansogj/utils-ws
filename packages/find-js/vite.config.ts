@@ -1,8 +1,8 @@
 import { defineConfig } from 'vite';
 
-// Single-entry library. ESM (.js) + CJS (.cjs). Types come from tsc (build:ts).
-// UMD (`dist/index.umd.js`) comes from webpack (build:umd) so the script-tag
-// consumer in apps/web-js still works.
+// Single-entry library. ESM (.mjs) + CJS (.cjs). Types come from tsc (build:ts).
+// UMD `dist/index.js` comes from webpack (build:umd) — filename convention
+// harmonized across all libraries: .mjs = ESM, .cjs = CJS, .js = UMD.
 export default defineConfig({
   build: {
     emptyOutDir: false,
@@ -11,7 +11,7 @@ export default defineConfig({
     lib: {
       entry: 'src/index.ts',
       formats: ['es', 'cjs'],
-      fileName: (format) => `index.${format === 'es' ? 'js' : 'cjs'}`,
+      fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
     },
     rollupOptions: {
       output: {

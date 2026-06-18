@@ -2,17 +2,15 @@
   "name": "@hansogj/find-js",
   "version": "6.7.5",
   "description": "Returning an iterable array of the result of querySelectorAll from root to selector",
-  "type": "module",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
-  "unpkg": "./dist/index.umd.js",
+  "unpkg": "./dist/index.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
+      "import": "./dist/index.mjs",
       "require": "./dist/index.cjs",
-      "default": "./dist/index.umd.js"
+      "default": "./dist/index.js"
     },
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
