@@ -95,7 +95,8 @@ export class Maybe<Value> {
       ),
     );
 
-  stringify = (): Maybe<string> => this.map((value) => JSON.stringify(value).replace(/\"/g, ''));
+  stringify = (): Maybe<string> =>
+    this.map((value) => (typeof value === 'string' ? value : JSON.stringify(value)));
 
   // Static members
   static just<Value>(value: Value): Maybe<Value> {

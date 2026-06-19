@@ -159,12 +159,14 @@ describe('Maybe', () => {
   describe('stringify', () => {
     it.each([
       ['', ''],
+      ['hello', 'hello'],
+      ['he said "hi"', 'he said "hi"'],
       [1, '1'],
       [true, 'true'],
       [[], '[]'],
       [{}, '{}'],
-      [{ a: [] }, '{a:[]}'],
-      [{ a: { b: { c: [{}, 'a', 1, []] } } }, '{a:{b:{c:[{},a,1,[]]}}}'],
+      [{ a: [] }, '{"a":[]}'],
+      [{ a: { b: { c: [{}, 'a', 1, []] } } }, '{"a":{"b":{"c":[{},"a",1,[]]}}}'],
     ])("should stringify value %j to '%s'", (value: any, stringifiedValue: string) => {
       expect(maybe(value).stringify().valueOrThrow()).toEqual(stringifiedValue);
     });
