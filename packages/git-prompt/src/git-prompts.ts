@@ -15,8 +15,11 @@ const splitBranchName = (currentBranch: string): BranchParts => {
     let scope = '';
 
     if (splits.length === 1) [type] = splits;
-    if (splits.length === 2) [type, scope] = splits;
-    if (splits.length === 3) [type, ticker, scope] = splits;
+    else if (splits.length === 2) [type, scope] = splits;
+    else {
+        [type, ticker] = splits;
+        scope = splits.slice(2).join('/');
+    }
     return { type, ticker, scope };
 };
 

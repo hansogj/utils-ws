@@ -52,6 +52,8 @@ describe('git-prompts', () => {
                 ['fix/AI', { initialType: 3 }],
                 ['fix/AI/got-it-all-wrong', { ticker: 'AI', initialType: 3, scope: '' }],
                 ['fix/-/got-it-all-wrong', { ticker: '-', initialType: 3, scope: '' }],
+                ['fix/AI/area/sub-area', { ticker: 'AI', initialType: 3, scope: '' }],
+                ['feat/team/AI/topic/v2', { ticker: 'team', initialType: 2, scope: '' }],
             ] as Array<[string, { initialType?: number; ticker?: string; scope?: string }]>)(
                 'when current branch is %j',
                 (currentBranch, expected) => {
@@ -101,6 +103,8 @@ describe('git-prompts', () => {
                 ['fix/AI', { initialType: 5, scope: 'AI' }],
                 ['fix/AI/got-it-all-wrong', { ticker: 'AI', initialType: 5, scope: 'got-it-all-wrong' }],
                 ['fix/-/got-it-all-wrong', { ticker: '-', initialType: 5, scope: 'got-it-all-wrong' }],
+                ['fix/AI/area/sub-area', { ticker: 'AI', initialType: 5, scope: 'area/sub-area' }],
+                ['feat/team/AI/topic/v2', { ticker: 'team', initialType: 4, scope: 'AI/topic/v2' }],
             ] as Array<[string, { initialType?: number; ticker?: string; scope?: string }]>)(
                 'when current branch is %j',
                 (currentBranch, expected) => {

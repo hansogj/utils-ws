@@ -1,6 +1,6 @@
 {
   "name": "@hansogj/git-prompt",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "description": "Interactive prompts for git branch names and commit messages along the conventional-commits convention",
   "type": "commonjs",
   "bin": {
