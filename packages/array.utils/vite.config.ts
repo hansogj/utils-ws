@@ -17,7 +17,6 @@ export default defineConfig({
         index: 'src/index.ts',
         'defined/index': 'src/defined/index.ts',
         'onEmpty/index': 'src/onEmpty/index.ts',
-        'flatMap/index': 'src/flatMap/index.ts',
       },
       formats: ['es', 'cjs'],
       fileName: (format, name) => `${name}.${format === 'es' ? 'mjs' : 'cjs'}`,

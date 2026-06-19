@@ -15,7 +15,6 @@ module.exports = () => ({
         index: { import: './src/index.ts', filename: 'index.js', library: { type: 'umd', name: 'array.utils' } },
         defined: { import: './src/defined/index.ts', filename: 'defined/index.js', library: { type: 'umd', name: 'defined' } },
         onEmpty: { import: './src/onEmpty/index.ts', filename: 'onEmpty/index.js', library: { type: 'umd', name: 'onEmpty' } },
-        flatMap: { import: './src/flatMap/index.ts', filename: 'flatMap/index.js', library: { type: 'umd', name: 'flatMap' } },
     },
     output: {
         ...config.output,

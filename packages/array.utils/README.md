@@ -7,8 +7,11 @@
 List of content:
 
 -   [defined](./src/defined/README.md)
--   [flatMap](./src/flatMap/README.md)
 -   [onEmpty](./src/onEmpty/README.md)
+
+## Breaking 3.0.0
+
+`flatMap` polyfill removed — `Array.prototype.flatMap` has been native since Node 11 / ES2019, so the polyfill never ran. The `./flatMap` sub-entry is gone. If you imported it explicitly, drop the import; native `flatMap` is already available.
 
 ## Breaking 2.0.0
 
