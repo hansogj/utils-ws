@@ -4,9 +4,13 @@ import { definedList } from './definedList';
 
 declare global {
     interface Array<T> {
+        /** Returns a new array with only the `defined` items. See `defined()`. */
         defined(): Array<T>;
+        /** Returns `this` if every item is defined; otherwise an empty array. */
         allDefined(): Array<T>;
+        /** Returns a single-element array containing the first item. */
         first(): Array<T>;
+        /** Returns a single-element array containing the last item. */
         last(): Array<T>;
     }
 }
