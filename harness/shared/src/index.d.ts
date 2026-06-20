@@ -11,3 +11,21 @@ export declare const verify: (
   toEqual: equal;
   toDiffer: equal;
 };
+
+type TestBody = (() => void) | (() => Promise<void>) | undefined;
+type TestFn = (name: string, fn?: TestBody, timeout?: number) => void;
+
+export interface ShouldItChain {
+  then(suite?: TestBody, timeout?: number): ShouldItChain;
+  dont(suite?: TestBody, timeout?: number): ShouldItChain;
+}
+
+export declare const might: (should: boolean) => string;
+export declare const createShouldIt: (
+  testFn: TestFn
+) => (description: string, condition: boolean, toBe?: unknown) => ShouldItChain;
+export declare const shouldIt: (
+  description: string,
+  condition: boolean,
+  toBe?: unknown
+) => ShouldItChain;
