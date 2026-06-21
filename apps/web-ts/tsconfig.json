@@ -20,6 +20,7 @@
         "src/index.ts",
         "src/run.ts",
         "src/run.spec.ts",
+        "src/should-it.spec.ts",
         "src/custom.d.ts"
     ]
 }

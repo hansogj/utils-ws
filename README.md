@@ -80,6 +80,38 @@ Versions shown in the apps come from a single source of truth: `harness/shared/s
 
 The Playwright suite lives in `harness/e2e/` — it boots http-servers for the three built apps via `playwright.config.ts`'s `webServer` block and asserts on the rendered DOM (heading, version list, success/error `<pre>` counts). Catches build-time regressions that the in-process jest tests miss — e.g. the tree-shaking-vs-polyfill issue that surfaced during the array.utils modernization.
 
+## Testing helper: `shouldIt`
+
+`harness/shared/src/should-it.js` is a small, framework-agnostic helper for writing branch-driven test names — `should X` / `should not X` — that only register the relevant branch. Useful when a single parametrised describe needs to assert one thing in the positive case and a different thing in the negative case, without an ugly `if` ladder.
+
+The implementation is intentionally tiny and **not published as a package** — it's shipped alongside the harness lib so any workspace consumer can `require('shared')` it (the harness apps already do). It works with Jest, Vitest, and any runner exposing a `test(name, fn, timeout)` signature.
+
+```ts
+import { createShouldIt } from 'shared';
+
+const should = createShouldIt(test); // pass your runner's `test`
+
+describe.each([
+  ['<ul><li>1</li></ul>', true],
+  ['<div>no list</div>', false],
+])('find("li") in %s', (template, hasItems) => {
+  beforeEach(() => { document.body.innerHTML = template; });
+
+  should('return at least one element', hasItems).then(() =>
+    expect(find('li').length).toBeGreaterThan(0)
+  );
+  should('return any elements', hasItems).dont(() =>
+    expect(find('li')).toHaveLength(0)
+  );
+});
+```
+
+`should(description, condition).then(body)` registers `should <description>` only when `condition` is true; `.dont(body)` registers `should not <description>` only when it's false. `.then(body, toBe)` appends `JSON.stringify(toBe)` to the label for parametrised expectations.
+
+A bare `shouldIt` export is also available — it resolves the runner's `test` via global lookup at call time, for codebases that already rely on Jest's / Vitest's global injection. Prefer the explicit `createShouldIt(test)` factory in new code.
+
+A `might(condition: boolean)` helper is also exported — returns `'should'` or `'should not'` — handy for building dynamic describe labels independently of the chain.
+
 ## Versioning
 
 The pnpm-script _ws:version:set:all_ will ensure all packages are updated with same strategy, and git tagging is done right
