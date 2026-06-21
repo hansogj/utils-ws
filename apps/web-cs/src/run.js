@@ -1,4 +1,4 @@
-const { suite, dependencies, verify, versions } = require('shared');
+const { suite, dependencies, verify, versions, createShouldIt, might } = require('shared');
 const Abonnement = require("@hansogj/abonnement-js").Abonnement;
 const find = require("@hansogj/find-js").default;
 const maybe = require("@hansogj/maybe").default;
@@ -40,4 +40,28 @@ export const run = () => {
 
         .after((numberOfTests) => verify('expect to have ran 6 tests', () => numberOfTests).toEqual(6));
 
+    let skippedBodyRan = false;
+    const sbShouldIt = suite("shouldIt verification")
+        .before(() => { skippedBodyRan = false; });
+    const should = createShouldIt((name, fn) => sbShouldIt.test(name, fn));
+
+    should("include the `should` prefix on positive cases", true)
+        .then(() => verify("positive body ran", () => "ran").toEqual("ran"));
+    should("include the `should not` prefix on negative cases", false)
+        .dont(() => verify("negative body ran", () => "ran").toEqual("ran"));
+
+    should("not register .then when condition is false", false)
+        .then(() => { skippedBodyRan = true; });
+    should("not register .dont when condition is true", true)
+        .dont(() => { skippedBodyRan = true; });
+
+    sbShouldIt
+        .test("skipped bodies were never invoked", () =>
+            verify("skippedBodyRan", () => skippedBodyRan).toEqual(false))
+        .test("might() helper", () => {
+            verify("might(true)", () => might(true)).toEqual("should");
+            verify("might(false)", () => might(false)).toEqual("should not");
+        })
+        .after((numberOfTests) =>
+            verify("expected 4 registered tests", () => numberOfTests).toEqual(4));
 };
