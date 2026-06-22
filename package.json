@@ -98,7 +98,22 @@
     "modulePathIgnorePatterns": [
       "<rootDir>/apps/",
       "<rootDir>/harness/"
-    ]
+    ],
+    "collectCoverageFrom": [
+      "packages/*/src/**/*.{ts,tsx}",
+      "!packages/*/src/**/*.spec.{ts,tsx}",
+      "!packages/*/src/**/index.ts",
+      "!packages/git-prompt/src/{co,commit,retry,utils}.ts",
+      "!packages/immer-reduxer/src/types.ts"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 90,
+        "branches": 80,
+        "functions": 90,
+        "lines": 90
+      }
+    }
   },
   "engines": {
     "node": "^18 || ^20 || ^21 || ^22 || ^25"
