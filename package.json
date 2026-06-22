@@ -9,7 +9,7 @@
     "clean": "pnpm -r  clean  && rm -rf node_modules *.tgz surefire-reports",
     "generate": "node -- ./scripts/generate.js",
     "lint": "npx eslint packages/**/src",
-    "pre-commit": "pnpm run ws:ts && pnpm run circularity:check && pnpm run lint && pnpm test && pnpm run harness:test",
+    "pre-commit": "pnpm run ws:ts && pnpm run circularity:check && pnpm run lint && pnpm test --coverage && pnpm run harness:test",
     "prepack": "rm -f *.tgz && pnpm run build",
     "prettier:write": "prettier --write 'packages/**/*.{ts,tsx,js,jsx}'",
     "test:ci": "pnpm run test --ci  --reporters=default --reporters=jest-junit",
