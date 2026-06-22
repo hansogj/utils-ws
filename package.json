@@ -104,7 +104,7 @@
       "!packages/*/src/**/*.spec.{ts,tsx}",
       "!packages/*/src/**/index.ts",
       "!packages/git-prompt/src/{co,commit,retry,utils}.ts",
-      "!packages/immer-reduxer/src/types.ts"
+      "!packages/immer-reduxer/src/**"
     ],
     "coverageThreshold": {
       "global": {
