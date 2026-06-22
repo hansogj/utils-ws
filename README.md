@@ -82,7 +82,7 @@ The Playwright suite lives in `harness/e2e/` — it boots http-servers for the t
 
 ## Testing helper: `shouldIt`
 
-`harness/shared/src/should-it.js` is a small, framework-agnostic helper for writing branch-driven test names — `should X` / `should not X` — that only register the relevant branch. Useful when a single parametrised describe needs to assert one thing in the positive case and a different thing in the negative case, without an ugly `if` ladder.
+[`harness/shared/src/should-it.js`](./harness/shared/src/should-it.js) is a small, framework-agnostic helper for writing branch-driven test names — `should X` / `should not X` — that only register the relevant branch. Useful when a single parametrised describe needs to assert one thing in the positive case and a different thing in the negative case, without an ugly `if` ladder.
 
 The implementation is intentionally tiny and **not published as a package** — it's shipped alongside the harness lib so any workspace consumer can `require('shared')` it (the harness apps already do). It works with Jest, Vitest, and any runner exposing a `test(name, fn, timeout)` signature.
 
