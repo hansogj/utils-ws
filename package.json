@@ -9,7 +9,7 @@
     "clean": "pnpm -r  clean  && rm -rf node_modules *.tgz surefire-reports",
     "generate": "node -- ./scripts/generate.js",
     "lint": "npx eslint packages/**/src",
-    "pre-commit": "pnpm run ws:ts && pnpm run circularity:check && pnpm run lint && pnpm test && pnpm run harness:test",
+    "pre-commit": "pnpm run ws:ts && pnpm run circularity:check && pnpm run lint && pnpm test --coverage && pnpm run harness:test",
     "prepack": "rm -f *.tgz && pnpm run build",
     "prettier:write": "prettier --write 'packages/**/*.{ts,tsx,js,jsx}'",
     "test:ci": "pnpm run test --ci  --reporters=default --reporters=jest-junit",
@@ -98,7 +98,22 @@
     "modulePathIgnorePatterns": [
       "<rootDir>/apps/",
       "<rootDir>/harness/"
-    ]
+    ],
+    "collectCoverageFrom": [
+      "packages/*/src/**/*.{ts,tsx}",
+      "!packages/*/src/**/*.spec.{ts,tsx}",
+      "!packages/*/src/**/index.ts",
+      "!packages/git-prompt/src/{co,commit,retry,utils}.ts",
+      "!packages/immer-reduxer/src/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "statements": 90,
+        "branches": 80,
+        "functions": 90,
+        "lines": 90
+      }
+    }
   },
   "engines": {
     "node": "^18 || ^20 || ^21 || ^22 || ^25"
