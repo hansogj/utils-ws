@@ -1,6 +1,6 @@
 {
   "name": "@hansogj/find-js",
-  "version": "6.7.5",
+  "version": "6.7.6",
   "description": "Returning an iterable array of the result of querySelectorAll from root to selector",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
