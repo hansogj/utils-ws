@@ -148,7 +148,7 @@ describe('git-prompts', () => {
                     ];
 
                     beforeEach(async () => {
-                        mockedPrompts.mockResolvedValue({ type: 'feat', scope: 'some' });
+                        mockedPrompts.mockResolvedValue({ type: 'feat', scope: 'some', topic: 'something' });
                         gitPrompts.commit(currentBranch);
                     });
 
@@ -194,7 +194,8 @@ describe('git-prompts', () => {
     describe('output', () => {
         describe('checkout', () => {
             describe.each([
-                [{}, 'Cannot create branch with empty type', { type: 'fix' }, 'Cannot create branch with both scope and topic being empty'],
+                [{}, 'Cannot create branch with empty type'],
+                [{ type: 'fix' }, 'Cannot create branch with both scope and ticker being empty'],
             ])('when given answers is %j', (answers, expected) => {
                 beforeEach(async () => mockedPrompts.mockResolvedValue(answers));
                 afterEach(() => mockedPrompts.mockRestore());
@@ -228,7 +229,9 @@ describe('git-prompts', () => {
 
         describe('commit', () => {
             describe.each([
-                [{}, 'Cannot commit with empty type', { type: 'fix' }, 'Cannot commit with both ticker, scope and topic being empty'],
+                [{}, 'Cannot commit with empty type'],
+                [{ type: 'fix' }, 'Cannot commit without a topic or ticker'],
+                [{ type: 'fix', scope: 'AI' }, 'Cannot commit without a topic or ticker'],
             ])('when given answers is %j', (answers, expected) => {
                 beforeEach(async () => mockedPrompts.mockResolvedValue(answers));
                 afterEach(() => mockedPrompts.mockRestore());
@@ -240,18 +243,24 @@ describe('git-prompts', () => {
             });
 
             describe.each([
-                [{ type: 'feat', scope: 'AI' }, 'feat(AI)'],
-                [{ type: 'feat', scope: ' AI  ' }, 'feat(AI)'],
+                [{ type: 'feat', topic: 'add login flow' }, 'feat: add login flow'],
+                [{ type: 'feat', scope: 'AI', topic: 'add embeddings' }, 'feat(AI): add embeddings'],
+                [{ type: 'feat', scope: ' AI  ', topic: 'trimmed scope' }, 'feat(AI): trimmed scope'],
                 [{ type: 'feat', ticker: 'ABC-123' }, 'feat: [ABC-123]'],
                 [{ type: 'feat', ticker: ' ABC  123   ' }, 'feat: [ABC-123]'],
                 [{ type: 'feat', ticker: 'ABC-123', scope: 'AI' }, 'feat(AI): [ABC-123]'],
                 [{ type: 'feat', ticker: 'ABC-123', scope: 'AI', breaking: true }, 'feat(AI)!: [ABC-123]'],
+                [{ type: 'feat', topic: 'remove legacy api', breaking: true }, 'feat!: remove legacy api'],
                 [
                     { type: 'feat', ticker: 'ABC-123', scope: 'AI', topic: 'done lots of things' },
                     'feat(AI): [ABC-123] done lots of things',
                 ],
-                [{ type: 'wip', scope: 'AI' }, 'wip(AI)'],
+                [
+                    { type: 'feat', scope: 'AI', topic: 'base change', extended: 'extra context here' },
+                    'feat(AI): base change\n\nextra context here',
+                ],
                 [{ type: 'wip', topic: 'half done' }, 'wip: half done'],
+                [{ type: 'wip', scope: 'AI', topic: 'in progress' }, 'wip(AI): in progress'],
             ])('when given answers is %j', (answers, expected) => {
                 let result = '';
                 beforeEach(async () => {

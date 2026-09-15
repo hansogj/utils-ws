@@ -67,8 +67,8 @@ const commit = async (currentBranch: string): Promise<string> => {
         throw Error('Cannot commit with empty type');
     }
 
-    if (!scope && !topic && !ticker) {
-        throw Error('Cannot commit with both ticker, scope and topic being empty');
+    if (!topic && !ticker) {
+        throw Error('Cannot commit without a topic or ticker');
     }
 
     const message = [topic, extended].filter(Boolean).join('\n\n');
