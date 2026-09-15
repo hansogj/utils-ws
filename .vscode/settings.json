@@ -1,28 +1,15 @@
 {
     "window.title": "@hansogj/utils-ws [${activeEditorShort}]",
-    "workbench.colorTheme": "Darktooth",
-    "workbench.colorCustomizations": {
-        "[Darktooth]": {
-            "activityBar.background": "#963f01",
-            "statusBar.background": "#963f01",
-            "titleBar.activeBackground": "#963f01",
-            "titleBar.inactiveBackground": "#963f01",
-            "scrollbar.shadow": "#963f01",
-            "scrollbarSlider.background": "#963f01",
-            "sideBar.background": "#3c1a0155",
-            "editor.background": "#3c1a0111"
-        }
-    },
     "files.exclude": {
         "**/dist": true,
-        "**/*tgz": true,
+        "**/*tgz": true
     },
     "cSpell.ignoreRegExpList": [
         "abonne.*",
         "endre.*",
         "init.*",
         "oppdat.*",
-        "verdi*",
+        "verdi*"
     ],
     "cSpell.words": [
         "abonnent",
@@ -39,6 +26,6 @@
         "kallt",
         "spion",
         "varsle",
-        "verdi",
-    ],
+        "verdi"
+    ]
 }
