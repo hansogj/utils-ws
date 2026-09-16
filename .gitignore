@@ -142,3 +142,6 @@ harness/shared/src/deps.json
 # playwright artefacts
 harness/e2e/test-results/
 harness/e2e/playwright-report/
+
+# Claude Code runtime state
+.claude/scheduled_tasks.lock
