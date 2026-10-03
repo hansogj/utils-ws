@@ -3,11 +3,13 @@ import path from 'node:path';
 
 const repoRoot = path.resolve(__dirname, '..', '..');
 
-// Spin up the three harness apps via their http-server `start` scripts.
+// Spin up the three harness apps by invoking the http-server Node.js script
+// directly, bypassing `pnpm exec` so Playwright's SIGTERM reaches the process
+// rather than being swallowed by a pnpm/shell wrapper.
 // They serve the BUILT dist/, so `pnpm run harness:build` must have run first
 // (the root `harness:e2e` script enforces this).
 const startCommand = (app: string, port: number) => ({
-  command: `pnpm --filter ${app} start`,
+  command: `node apps/${app}/node_modules/http-server/bin/http-server -p ${port} apps/${app}/dist`,
   cwd: repoRoot,
   url: `http://localhost:${port}/`,
   timeout: 60_000,

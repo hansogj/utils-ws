@@ -55,6 +55,7 @@ jobs:
 
             - name: E2E harness apps (Playwright)
               run: pnpm run harness:e2e
+              timeout-minutes: 5
 
             - name: Upload Playwright report on failure
               if: failure()
