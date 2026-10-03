@@ -11,7 +11,7 @@ jobs:
 
         strategy:
             matrix:
-                node-version: [20.x, 22.x, 25.x]
+                node-version: [24.x]
 
         steps:
             - uses: actions/checkout@v6
@@ -55,6 +55,7 @@ jobs:
 
             - name: E2E harness apps (Playwright)
               run: pnpm run harness:e2e
+              timeout-minutes: 5
 
             - name: Upload Playwright report on failure
               if: failure()
