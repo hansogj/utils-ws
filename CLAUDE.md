@@ -2,9 +2,13 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Package manager
+## Node / pnpm setup
 
-pnpm is enforced via `preinstall: only-allow pnpm`. Do not run `npm install` or `yarn` — they will be rejected. Lockfile is `pnpm-lock.yaml`. The project `.npmrc` pins `inject-workspace-packages=true` so the lockfile and CI agree regardless of any contributor's global `~/.npmrc`; if `pnpm i` warns about unknown pnpm-style configs leaking from global, expect a similar CI `ERR_PNPM_LOCKFILE_CONFIG_MISMATCH` next time one of them gets baked into the lockfile — pin it here.
+- **Node**: managed by nvm. `.nvmrc` pins the version — run `nvm use` if your node is wrong.
+- **pnpm**: installed as an npm global under nvm (`npm install -g pnpm`). Do not suggest `corepack enable` or any other install method — corepack is not in use on this machine. The `packageManager` field in `package.json` is informational only; nothing enforces it at runtime.
+- Useful aliases: `pn` → pnpm, `pnr` → pnpm run, `pn-fi` → wipe + reinstall, `pn-freeze` → frozen reinstall.
+- Do not run `npm install` or `yarn` — `preinstall: only-allow pnpm` will reject them.
+- Lockfile is `pnpm-lock.yaml`. The project `.npmrc` pins `inject-workspace-packages=true` so the lockfile and CI agree regardless of any contributor's global `~/.npmrc`; if `pnpm i` warns about unknown pnpm-style configs leaking from global, expect a similar CI `ERR_PNPM_LOCKFILE_CONFIG_MISMATCH` next time one of them gets baked into the lockfile — pin it here.
 
 ## Common commands
 
