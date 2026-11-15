@@ -2,15 +2,15 @@ FROM node:26-slim AS base
 
 ENV PNPM_HOME="/pnpm"
 ENV PATH="$PNPM_HOME:$PATH"
-RUN npm install --global corepack@latest --force
-RUN corepack enable
+# Same setup as the dev machine: pnpm as an npm global, used only to bootstrap.
+# pnpm 12 reads packageManager in package.json and switches itself to that pinned version.
+RUN npm install --global --allow-scripts=pnpm pnpm
 
 FROM base AS build
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
-# corepack reads packageManager from package.json and activates the right pnpm
-RUN corepack install
+# First pnpm call inside the repo downloads + activates the packageManager-pinned version
 RUN pnpm --version && node -v
 
 RUN pnpm config set store-dir /pnpm/store
